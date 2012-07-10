@@ -15,7 +15,7 @@ Musubi.ready(function(context) {
       var text = "game started!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
-      start_obj = new SocialKit.DbObj({type : "note", json: content}) //global
+      start_obj = new SocialKit.Obj({type : "note", json: content}) //global
       musu.appContext.feed.post(start_obj);
       //musu.appContext.quit();
       console.log("start_obj looks like this after post:"+ start_obj );
@@ -34,7 +34,9 @@ Musubi.ready(function(context) {
       var dare_content = { "__html" : html, "text" : dare_text };
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
-      //musu.appContext.feed.post(truth_obj)d;
+      var start_obj_DbObj = musu.appContext.query.query("type='note'");
+      console.log(start_obj_DbObj);
+      //musu.appContext.feed.post(truth_obj);
       //musu.appContext.feed.post(dare_obj);
 
       //start_obj.post(truth_obj);
