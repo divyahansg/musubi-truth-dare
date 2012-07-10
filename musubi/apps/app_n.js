@@ -40,7 +40,7 @@ Musubi.ready(function(context) {
       	//start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       //}
       console.log("finished!");
-      console.log("start obj is: " + JSON.stringify(start_obj_DbObj));
+      console.log("start obj is: " + start_obj_DbObj);
       //musu.appContext.start_obj_DbObj.post(truth_obj);
       
       //musu.appContext.feed.post(truth_obj);
