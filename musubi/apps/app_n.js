@@ -36,7 +36,7 @@ Musubi.ready(function(context) {
       
       var start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       console.log("blahblahblahblah" + start_obj_DbObj);
-      while (!start_obj_DbObj instanceof SocialKit.DbObj)
+      while (!start_obj_DbObj instanceof SocialKit.DbObj.prototype)
       {
       	start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       }
