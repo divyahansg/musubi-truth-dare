@@ -37,10 +37,10 @@ Musubi.ready(function(context) {
       var start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       //while (!(start_obj_DbObj instanceof SocialKit.DbObj))
       //{
-      //	start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
+      	start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       //}
       console.log("finished!");
-      console.log("start obj is: " + start_obj_DbObj.html());
+      console.log("start obj is: " + JSON.stringify(start_obj_DbObj));
       //musu.appContext.start_obj_DbObj.post(truth_obj);
       
       //musu.appContext.feed.post(truth_obj);
