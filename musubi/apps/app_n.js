@@ -35,7 +35,7 @@ Musubi.ready(function(context) {
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
       var start_obj_DbObj = musu.appContext.feed.query("type='note'");
-      console.log(start_obj_DbObj);
+      console.log("blahblahblahblah" + start_obj_DbObj);
       //musu.appContext.feed.post(truth_obj);
       //musu.appContext.feed.post(dare_obj);
 
@@ -43,7 +43,6 @@ Musubi.ready(function(context) {
       //start_obj.post(dare_obj);
       
       musu.appContext.quit();  
-      console.log("start_obj looks like this after quit:"+ start_obj );
 	});
     
     
