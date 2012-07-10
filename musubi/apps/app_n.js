@@ -36,7 +36,7 @@ Musubi.ready(function(context) {
       
       var start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       console.log("blahblahblahblah" + start_obj_DbObj);
-      while (!start_obj_DbObj instanceof DbObj)
+      while (!start_obj_DbObj instanceof Obj)
       {
       	start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       }
