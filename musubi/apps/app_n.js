@@ -34,7 +34,7 @@ Musubi.ready(function(context) {
       var dare_content = { "__html" : html, "text" : dare_text };
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
-      //musu.appContext.feed.post(truth_obj);
+      //musu.appContext.feed.post(truth_obj)d;
       //musu.appContext.feed.post(dare_obj);
 
       //start_obj.post(truth_obj);
