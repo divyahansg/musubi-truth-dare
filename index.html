@@ -1,1 +1,50 @@
-My GitHub Page
+
+<DOCTYPE! HTML>
+<html>
+	<head>
+		<script src="http://mobisocial.stanford.edu/musubi/apps/SocialKit-JS/lib/socialKit-1.js"></script>
+        <script src="http://mobisocial.stanford.edu/musubi/apps/SocialKit-JS/jquery-1.5.2.min.js"></script>
+        <script src="http://www.canvashtml5test.appspot.com/test/musubi/apps/app.js"></script>    
+		<center>
+			Musubi Truth or Dare
+		</center>
+		<style>
+			.start {display:inline;}
+			.about {display:none;}
+			.input {display:none;}
+		</style>
+	</head>
+	
+		
+	<body>
+		<div class="start">
+			<br/>
+			<center>
+ 				<button id="start">Start Game</button>
+				<br/><br/>
+ 				<button id="about">About</button>
+			</center>
+		</div>
+		<div class="about">
+			<center>
+				About
+				<br /><br/>
+				Users will invite others on the feed to the game. Each user will submit a Truth and a Dare at the start of the game. One game will be comprised of two rounds. The first round will allow each player to choose between receiving a Truth or a Dare, chosen from those compiled at the start of the game. In the second round, the players will automatically receive a Dare if they chose a Truth for the first round, and vice versa. For Dares, players must submit a video or photo as evidence of completion, or they may choose to Pass. For Truths, players must respond to the question posed. Whether it be a truth or a dare, the players' actions will be posted onto the feed.
+				<br/><br/>
+ 				<button id="return">Return</button>
+				<br/><br/>
+				Developed by <a href="mailto:divyahansg@gmail.com">Divyahans Gupta</a> and <a href="mailto:nikhil.narayen@gmail.com">Nikhil Narayen</a>
+			</center>
+		</div>
+		<div class="input">
+			<center>
+				<br/>
+				Enter a truth: <input type="text" id="truth" name="truth" placeholder="e.g. What is your darkest secret?" size="27">
+				<br/>
+				Enter a dare:  <input type="text" id="dare" name="dare" placeholder="e.g. Lick a tree" size="27">
+				<br/>
+ 				<button id="submit">Submit</button>
+			</center>
+		</div>
+	</body>
+</html>
