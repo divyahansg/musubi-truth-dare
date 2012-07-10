@@ -17,7 +17,7 @@ Musubi.ready(function(context) {
       var content = { "__html" : html, "text" : text };
       start_obj = new SocialKit.Obj({type : "note", json: content}) //global
       musu.appContext.feed.post(start_obj);
-      musu.appContext.quit();
+      //musu.appContext.quit();
       console.log("start_obj looks like this after post:"+ start_obj );
       
     });
