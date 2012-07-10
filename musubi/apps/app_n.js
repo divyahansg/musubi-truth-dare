@@ -41,6 +41,7 @@ Musubi.ready(function(context) {
       //start_obj.post(dare_obj);
       
       musu.appContext.quit();  
+      console.log("start_obj looks like this after quit:"+ start_obj );
 	});
     
     
