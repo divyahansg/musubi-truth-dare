@@ -44,11 +44,6 @@ Musubi.ready(function(context) {
       //start_obj.post(truth_obj);
       //start_obj.post(dare_obj);
       
-      console.log("after start_obj.post");
-      
-      console.log("querying subfeed...");
-      var arr = start_obj.query("type = 'truth'");
-      console.log("Got results: "+ JSON.stringify(arr));
       musu.appContext.quit();  
 	});
     
