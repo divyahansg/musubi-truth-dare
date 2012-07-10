@@ -24,7 +24,6 @@ Musubi.ready(function(context) {
     
     
     $("#submit").click(function(e) {
-    /**
       var truth_text = $("#truth").val();
       var html = '<span>' + truth_text + '</span>';
       var truth_content = { "__html" : html, "text" : truth_text };
@@ -42,8 +41,8 @@ Musubi.ready(function(context) {
       
       console.log("after appcontext.feed/before start_obj.post");
       console.log("start_obj looks like this:"+ start_obj );
-      start_obj.post(truth_obj);
-      start_obj.post(dare_obj);
+      //start_obj.post(truth_obj);
+      //start_obj.post(dare_obj);
       
       console.log("after start_obj.post");
       
@@ -51,7 +50,6 @@ Musubi.ready(function(context) {
       var arr = start_obj.query("type = 'truth'");
       console.log("Got results: "+ JSON.stringify(arr));
       musu.appContext.quit();  
-         **/   
 	});
     
     
