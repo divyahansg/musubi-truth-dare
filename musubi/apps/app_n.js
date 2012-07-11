@@ -39,12 +39,12 @@ Musubi.ready(function(context) {
       }
       var truth_text = $("#truth").val();
       var html = '<span>' + truth_text + '</span>';
-      var truth_content = { "__html" : html, "text" : truth_text };
+      var truth_content = { "__html" : html, "text" : truth_text};
       var truth_obj = new SocialKit.Obj({type : "truth", json: truth_content});
       
       var dare_text = $("#dare").val();
       html = '<span>' + dare_text + '</span>';
-      var dare_content = { "__html" : html, "text" : dare_text };
+      var dare_content = { "__html" : html, "text" : dare_text};
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
       var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
