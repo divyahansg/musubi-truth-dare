@@ -8,6 +8,14 @@ Musubi.ready(function(context) {
     console.log("launching bigwords.");
     musu = new MusuWriter(context);
     
+    var state_data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1");
+    if(state_data.length > 0)
+    {
+    	$(".start").css("display","none");
+		$(".about").css("display","none");
+		$(".input").css("display","inline");
+    }
+    
     $("#start").click(function(e) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
@@ -15,7 +23,7 @@ Musubi.ready(function(context) {
       var text = "game started!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
-      start_obj = new SocialKit.Obj({type : "note", json: content}) //global
+      start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}) //global
       musu.appContext.feed.post(start_obj);
       //musu.appContext.quit();
       console.log("start_obj looks like this after post:"+ start_obj );
@@ -34,15 +42,15 @@ Musubi.ready(function(context) {
       var dare_content = { "__html" : html, "text" : dare_text };
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
-      var data = musu.appContext.feed.query("type='note'", "_id desc limit 1")[0];
+      var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
       var start_obj_DbObj = new SocialKit.DbObj(data);
       start_obj_DbObj.post(truth_obj);
       start_obj_DbObj.post(dare_obj);
       
       var temp_truth = new SocialKit.Obj(start_obj_DbObj.query("type='truth'")[0]);
       var temp_dare = new SocialKit.Obj(start_obj_DbObj.query("type='dare'")[0]);
-      var truth_info = temp_truth.json['truth_text'];
-      var dare_info = temp_truth.json['dare_text'];
+      var truth_info = temp_truth.json['text'];
+      var dare_info = temp_truth.json['text'];
       console.log(truth_info);
       console.log(dare_info);
       
@@ -51,6 +59,7 @@ Musubi.ready(function(context) {
     
 });
 $(function(){
+	
 	$("#about").click(function(e) {
 		$(".start").css("display","none");
 		$(".about").css("display","inline");
