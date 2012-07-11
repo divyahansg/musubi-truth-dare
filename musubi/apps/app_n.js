@@ -62,6 +62,9 @@ Musubi.ready(function(context) {
       var dare_info = temp_dare.json['text'];
       console.log("truth text is: " + truth_info);
       console.log("dare text is: " + dare_info);
+      
+      $(".choice").css("display","inline");
+	  $(".input").css("display","none");
 	});
     
     
@@ -83,8 +86,5 @@ $(function(){
 		$(".about").css("display","none");
 		$(".input").css("display","none");
 	});
-    $("#submit").click(function(e) {
-		$(".choice").css("display","inline");
-		$(".input").css("display","none");
-	});	
+
 });
