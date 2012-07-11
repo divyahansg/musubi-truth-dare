@@ -38,7 +38,6 @@ Musubi.ready(function(context) {
       //musu.appContext.feed.post(dare_obj);
       
       var data = musu.appContext.feed.query("type='note'", "_id desc limit 1")[0];
-      console.log("start_obj_DbObj is " + start_obj_DbObj.toString());
       var start_obj_DbObj = new SocialKit.DbObj(data);
       start_obj_DbObj.post(truth_obj);
       
