@@ -37,7 +37,7 @@ Musubi.ready(function(context) {
       musu.appContext.feed.post(truth_obj);
       musu.appContext.feed.post(dare_obj);
       
-      var start_obj_DbObj = musu.appContext.feed.query("type='note'",1);
+      var start_obj_DBObj = musu.appContext.feed.query("type='note'",1);
       //while (!(start_obj_DbObj instanceof SocialKit.DbObj))
       //{
       //	start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
@@ -45,7 +45,6 @@ Musubi.ready(function(context) {
       
       console.log("finished our console");
       console.log("marker here    " + JSON.stringify(start_obj_DBObj));
-      console.log(start_obj_DbObj);
       //musu.appContext.start_obj_DbObj.post(truth_obj);
       
       //start_obj.post(truth_obj);
