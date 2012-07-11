@@ -37,7 +37,7 @@ Musubi.ready(function(context) {
       //musu.appContext.feed.post(truth_obj);
       //musu.appContext.feed.post(dare_obj);
       
-      var start_obj_DbObj = musu.appContext.feed.query("type='note'", 1);
+      var start_obj_DbObj = musu.appContext.feed.query("type='note'");
       console.log("toString" + start_obj_DBObj.toString());
 
       //while (!(start_obj_DbObj instanceof SocialKit.DbObj))
@@ -76,5 +76,5 @@ $(function(){
     $("#submit").click(function(e) {
 		$(".choice").css("display","inline");
 		$(".input").css("display","none");
-	});
+	});	
 });
