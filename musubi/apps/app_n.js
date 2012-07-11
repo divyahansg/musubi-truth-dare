@@ -39,8 +39,13 @@ Musubi.ready(function(context) {
       start_obj_DbObj.post(truth_obj);
       start_obj_DbObj.post(dare_obj);
       
-      var temp_truth = start_obj_DbObj.query("type='truth'");
-      var temp_dare = start_obj_DbObj.query("type='dare'");
+      var temp_truth = new SocialKit.Obj(start_obj_DbObj.query("type='truth'")[0]);
+      var temp_dare = new SocialKit.Obj(start_obj_DbObj.query("type='dare'")[0]);
+      var truth_info = temp_truth.json['truth_text'];
+      var dare_info = temp_truth.json['dare_text'];
+      console.log(truth_info);
+      console.log(dare_info);
+      
 	});
     
     
