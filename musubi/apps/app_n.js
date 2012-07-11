@@ -34,17 +34,31 @@ Musubi.ready(function(context) {
       var dare_content = { "__html" : html, "text" : dare_text };
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
+<<<<<<< HEAD
       musu.appContext.feed.post(truth_obj);
       musu.appContext.feed.post(dare_obj);
       
       var start_obj_DbObj = musu.appContext.feed.query("type='note'", 1);
+=======
+      var start_obj_DBObj;
+      for(i=0; i < 5; i++)
+      {
+      	start_obj_DBObj = setTimeout(function(){
+      		
+      		return musu.appContext.feed.query("type='note'",1);
+      	
+      	}, 200000);
+      }
+    console.log(musu.appContext.toString());
+
+>>>>>>> ad0ec576404ed455c8dcc93e656d4235b842b00d
       //while (!(start_obj_DbObj instanceof SocialKit.DbObj))
       //{
       //	start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       //}
       
-      console.log("finished!");
-      console.log(start_obj_DbObj);
+      console.log("finished our console");
+      console.log("marker here    " + JSON.stringify(start_obj_DBObj));
       //musu.appContext.start_obj_DbObj.post(truth_obj);
       
       //start_obj.post(truth_obj);
