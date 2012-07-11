@@ -83,7 +83,7 @@ $(function(){
 		$(".input").css("display","none");
 	});
     $("#submit").click(function(e) {
-		$(".choice").css("choice","inline");
+		$(".choice").css("display","inline");
 		$(".input").css("display","none");
 	});
 });
