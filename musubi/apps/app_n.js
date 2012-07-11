@@ -43,7 +43,7 @@ Musubi.ready(function(context) {
       	
       	}, 200000);
       }
-    console.log(start_obj_DBObj);
+    console.log(musu.appContext.feed.toString());
 
       //while (!(start_obj_DbObj instanceof SocialKit.DbObj))
       //{
