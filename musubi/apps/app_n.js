@@ -42,7 +42,6 @@ Musubi.ready(function(context) {
       //{
       //	start_obj_DbObj = musu.appContext.feed.query("type='note'")[0];
       //}
-      var start_obj_DbObj = musu.appContext.feed.query("type='note'");
       
       console.log("finished!");
       //console.log(JSON.stringify(start_obj_DBObj));
