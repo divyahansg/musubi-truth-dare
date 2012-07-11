@@ -52,16 +52,10 @@ Musubi.ready(function(context) {
       start_obj_DbObj.post(truth_obj);
       start_obj_DbObj.post(dare_obj);
       
-      var temp_truth = new SocialKit.Obj(start_obj_DbObj.query("type='truth'")[0]);
-      var temp_dare = new SocialKit.Obj(start_obj_DbObj.query("type='dare'")[0]);
-      var truth_info = temp_truth.json['text'];
-      var dare_info = temp_truth.json['text'];
-      console.log(truth_info);
-      console.log(dare_info);
-      
-      var dare_info = temp_dare.json['text'];
-      console.log("truth text is: " + truth_info);
-      console.log("dare text is: " + dare_info);
+      //var temp_truth = new SocialKit.Obj(start_obj_DbObj.query("type='truth'")[0]);
+      //var temp_dare = new SocialKit.Obj(start_obj_DbObj.query("type='dare'")[0]);
+      //var truth_info = temp_truth.json['text'];
+      //var dare_info = temp_truth.json['text'];
       
       $(".choice").css("display","inline");
 	  $(".input").css("display","none");
@@ -70,7 +64,6 @@ Musubi.ready(function(context) {
     
 });
 $(function(){
-	
 	$("#about").click(function(e) {
 		$(".start").css("display","none");
 		$(".about").css("display","inline");
