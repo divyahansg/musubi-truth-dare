@@ -79,5 +79,12 @@ $(function(){
 		$(".about").css("display","none");
 		$(".input").css("display","none");
 	});
-
+    $("#truth_button").click(function(e) {
+		$(".truth_page").css("display","inline");
+		$(".choice").css("display","none");
+	});
+	$("#dare_button").click(function(e) {
+		$(".truth_page").css("display","inline");
+		$(".choice").css("display","none");
+	});
 });
