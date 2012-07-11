@@ -3,7 +3,7 @@ function MusuWriter(app) {
 }
 
 var musu;
-var start_obj; //global
+var start_obj_DbObj; //global
 Musubi.ready(function(context) {
     console.log("launching bigwords.");
     musu = new MusuWriter(context);
@@ -23,7 +23,7 @@ Musubi.ready(function(context) {
       var text = "game started!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
-      start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}) //global
+      var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}) //global
       musu.appContext.feed.post(start_obj);
       //musu.appContext.quit();
       console.log("start_obj looks like this after post:"+ start_obj );
@@ -48,7 +48,7 @@ Musubi.ready(function(context) {
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
       var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
-      var start_obj_DbObj = new SocialKit.DbObj(data);
+      start_obj_DbObj = new SocialKit.DbObj(data);
       start_obj_DbObj.post(truth_obj);
       start_obj_DbObj.post(dare_obj);
       
@@ -59,6 +59,24 @@ Musubi.ready(function(context) {
       
       $(".choice").css("display","inline");
 	  $(".input").css("display","none");
+	});
+	
+	$("#truth_button").click(function(e) {
+		var temp_truth = start_obj_DbObj.query("type='truth'");
+		if(temp_truth.length > 0)
+		{
+			var arr = new Array();
+			for(i = 0; i < temp_truth.length; i++) 
+			{
+				var truth_obj = new SocialKit.DbObj(temp_truth[i]);
+				var nested = truth_obj.query("type='answer'");
+				if(nested.length ==0)
+					arr.push(truth_obj);
+			}
+			var rand = Math.random(arr.length);
+			var rand_truth = arr[rand].json['text'];
+			$("#current_truth").append(rand_truth);
+		}
 	});
     
     
