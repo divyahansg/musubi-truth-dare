@@ -44,7 +44,7 @@ Musubi.ready(function(context) {
       //}
       
       console.log("finished!");
-      //console.log(JSON.stringify(start_obj_DBObj));
+      console.log(JSON.stringify(start_obj_DBObj));
       //musu.appContext.start_obj_DbObj.post(truth_obj);
       
       //start_obj.post(truth_obj);
