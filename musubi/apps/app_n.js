@@ -50,10 +50,16 @@ Musubi.ready(function(context) {
       var temp_truth = new SocialKit.Obj(start_obj_DbObj.query("type='truth'")[0]);
       var temp_dare = new SocialKit.Obj(start_obj_DbObj.query("type='dare'")[0]);
       var truth_info = temp_truth.json['text'];
+<<<<<<< HEAD
       var dare_info = temp_truth.json['text'];
       console.log(truth_info);
       console.log(dare_info);
       
+=======
+      var dare_info = temp_dare.json['text'];
+      console.log("truth text is: " + truth_info);
+      console.log("dare text is: " + dare_info);
+>>>>>>> e28fd9fff737c5ba7bd7975c87b7862dc86baa77
 	});
     
     
