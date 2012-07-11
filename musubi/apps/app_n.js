@@ -40,12 +40,12 @@ Musubi.ready(function(context) {
       for(i=0; i < 5; i++)
       {
       	start_obj_DBObj = setTimeout(function(){
-      	
+      		
       		return musu.appContext.feed.query("type='note'",1);
       	
       	}, 2000);
       	console.log(start_obj_DBObj);
-      	
+
       }
       var start_obj_DBObj = musu.appContext.feed.query("type='note'",1);
       //while (!(start_obj_DbObj instanceof SocialKit.DbObj))
