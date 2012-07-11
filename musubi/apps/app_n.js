@@ -32,6 +32,11 @@ Musubi.ready(function(context) {
     
     
     $("#submit").click(function(e) {
+      if($("#truth").val().length == 0 ||  $("#dare").val().length == 0)
+      {
+        alert("Please input a truth and a dare.");
+        return;
+      }
       var truth_text = $("#truth").val();
       var html = '<span>' + truth_text + '</span>';
       var truth_content = { "__html" : html, "text" : truth_text };
