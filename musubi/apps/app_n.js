@@ -5,7 +5,6 @@ function MusuWriter(app) {
 var musu;
 var start_obj_DbObj; //global
 Musubi.ready(function(context) {
-    console.log("launching bigwords.");
     musu = new MusuWriter(context);
     
     var state_data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1");
@@ -15,7 +14,7 @@ Musubi.ready(function(context) {
 		$(".about").css("display","none");
 		$(".input").css("display","inline");
     }
-    //console.log("*** musu.appContext = " + musu.appContext);
+    console.log("*** musu.appContext = " + context);
     $("#start").click(function(e) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
