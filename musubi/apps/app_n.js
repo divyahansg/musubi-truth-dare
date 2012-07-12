@@ -14,7 +14,7 @@ Musubi.ready(function(context) {
 		$(".about").css("display","none");
 		$(".input").css("display","inline");
     }
-    alert("Hi " + context.user["name"] + "!");
+    //alert("Hi " + context.user["name"] + "!");
     $("#start").click(function(e) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
@@ -37,12 +37,12 @@ Musubi.ready(function(context) {
       }
       var truth_text = $("#truth").val();
       var html = '<span>' + truth_text + '</span>';
-      var truth_content = { "__html" : html, "text" : truth_text};
+      var truth_content = { "__html" : html, "text" : truth_text, "src_user": context.user["name"]};
       var truth_obj = new SocialKit.Obj({type : "truth", json: truth_content});
       
       var dare_text = $("#dare").val();
       html = '<span>' + dare_text + '</span>';
-      var dare_content = { "__html" : html, "text" : dare_text};
+      var dare_content = { "__html" : html, "text" : dare_text, "src_user": context.user["name"]};
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
       var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
@@ -77,7 +77,7 @@ Musubi.ready(function(context) {
 			console.log("arr.length = " + arr.length);
 			console.log("arr["+rand+"] = " + arr[rand]);
 			console.log("arr["+rand+"].json.text = " + arr[rand].json['text']);
-			$("#current_truth").append(arr[rand].json['text']);
+			$("#current_truth").append(arr[rand].json['text'] + " asked by: " + arr[rand].json['name']);
 		}
 	});
     
