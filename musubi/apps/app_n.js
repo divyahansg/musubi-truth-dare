@@ -68,11 +68,11 @@ Musubi.ready(function(context) {
 			var arr = new Array();
 			for(i = 0; i < temp_truth.length; i++) 
 			{
-				var truth_obj = new SocialKit.DbObj(temp_truth[i]);
-				var nested = truth_obj.query("type='answer'");
+				var truth_DbObj = new SocialKit.DbObj(temp_truth[i]);
+				var nested = truth_DbObj.query("type='answer'");
 				if(nested.length ==0)
 				{
-					arr.push(truth_obj);
+					arr.push(new SocialKit.Obj(temp_truth[i]));
 				}
 			}
 			var rand = Math.floor(Math.random()* (arr.length+1));
