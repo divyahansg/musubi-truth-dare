@@ -37,22 +37,11 @@ Musubi.ready(function(context) {
       setTimeout(func, 4000);
       var test_user_obj;
 		function func() {
-    		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];//
+    		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
+    		console.log("data = " + data);
 		    start_obj_DbObj = new SocialKit.DbObj(data); 
-      		//console.log("start_obj_DbObj = " + start_obj_DbObj);
-      
       		start_obj_DbObj.post(user_obj);
-      		setTimeout(func1, 6000);
-      		function func1()
-      		{
-      			alert("lol");
-      			test_user_obj = start_obj_DbObj.query("type='user'", "_id desc limit 1");
-      		
-      		}
-
 		}
-		console.log("test_user_obj_things = " + JSON.stringify(test_user_obj));
-      	console.log("test_user_obj.length = " + test_user_obj.length);
       //musu.appContext.quit();
       
     });
