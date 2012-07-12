@@ -77,7 +77,7 @@ Musubi.ready(function(context) {
 			console.log("arr.length = " + arr.length);
 			console.log("arr["+rand+"] = " + arr[rand]);
 			console.log("arr["+rand+"].json.text = " + arr[rand].json['text']);
-			$("#current_truth").append(arr[rand].json['text'] + " asked by: " + arr[rand].json['name']);
+			$("#current_truth").append(arr[rand].json['text'] + " asked by: " + arr[rand].json['src_user']);
 		}
 	});
     
