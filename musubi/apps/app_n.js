@@ -34,7 +34,7 @@ Musubi.ready(function(context) {
       var user_json = {"id" : userID, "name" : context.user['name']};
       user_obj = new SocialKit.Obj({type: "user", json: user_json});
       console.log((user_obj));      
-      setTimeout(func, 10);
+      setTimeout(func, 100);
       var test_user_obj;
 		function func() {
     		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
