@@ -15,8 +15,8 @@ Musubi.ready(function(context) {
 		$(".input").css("display","inline");
 		
 		var start_obj_DbObj = new SocialKit.DbObj(state_data[0]); 
-		//var user = getUser(context);
-		//console.log("=============================THIS IS THE USER AND HIS NAME IS: " + user.json['name']);
+		var user = getUser(context);
+		console.log("=============================THIS IS THE USER AND HIS NAME IS: " + user.json['name']);
     }
     //alert("Hi " + context.user["name"] + "!");
     $("#start").click(function(e) {
