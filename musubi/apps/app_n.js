@@ -75,7 +75,7 @@ Musubi.ready(function(context) {
 					arr.push(new SocialKit.Obj(temp_truth[i])); //need Obj to extract json next
 				}
 			}
-			var rand = Math.floor(Math.random()* (arr.length+1));
+			var rand = Math.floor(Math.random()* (arr.length));
 			console.log("arr.length = " + arr.length);
 			console.log("arr["+rand+"] = " + arr[rand]);
 			console.log("arr["+rand+"].json.text = " + arr[rand].json['text']);
