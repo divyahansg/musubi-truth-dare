@@ -42,11 +42,12 @@ Musubi.ready(function(context) {
       		//console.log("start_obj_DbObj = " + start_obj_DbObj);
       
       		start_obj_DbObj.post(user_obj);
-      		setTimeout(func1, 4000);
+      		setTimeout(func1, 6000);
       		function func1()
       		{
-      			test_user_obj = start_obj_DbObj.query("type='user'");
-      			
+      			alert("lol");
+      			test_user_obj = start_obj_DbObj.query("type='user'", "_id desc limit 1");
+      		
       		}
 
 		}
