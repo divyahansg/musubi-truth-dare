@@ -76,9 +76,9 @@ Musubi.ready(function(context) {
 				}
 			}
 			var rand = Math.floor(Math.random()* (arr.length+1));
-			console.log("arr.length =" + arr.length);
-			console.log("arr[rand] = " + arr[rand]);
-			console.log("arr[rand].json.text = " + arr[rand].json['text']);
+			console.log("arr.length = " + arr.length);
+			console.log("arr["+rand+"] = " + arr[rand]);
+			console.log("arr["rand+"].json.text = " + arr[rand].json['text']);
 			$("#current_truth").append(arr[rand].json['text']);
 		}
 	});
