@@ -153,10 +153,12 @@ Musubi.ready(function(context) {
     }
     function showDone(json)
     {
+    	$(".start").css("display","none");
     	$(".truth_page").css("display","none"); //display done
 	}
 	function showAnswer(answer_json) //param: answer obj json
 	{
+	    $(".start").css("display","none");
 		var answer_obj = new SocialKit.Obj(answer_json); //make answer obj to get json
 		var json = answer_obj.json; //get json
 	    var page = json['screen_type']; //get screentype from json INSIDE answer obj
@@ -169,6 +171,7 @@ Musubi.ready(function(context) {
 	}
 	function showChoice(json) //show choice
 	{
+		$(".start").css("display","none");
 		$(".choice").css("display","inline");
 	}
 });
