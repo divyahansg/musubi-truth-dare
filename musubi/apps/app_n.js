@@ -162,12 +162,12 @@ Musubi.ready(function(context) {
 		var answer_obj = new SocialKit.Obj(answer_json); //make answer obj to get json
 		var json = answer_obj.json; //get json
 	    var page = json['screen_type']; //get screentype from json INSIDE answer obj
-	    if (page.equals("truth")) //if truth
+	    if (page == "truth") //if truth
 	    {
 	    	$("#current_truth").append(json['text'] + " asked by: " + json['truth_src']); //fill answer page
 	    	$(".truth_page").css("display","inline"); //show truth-answer page
 		}
-		//ELSE .EQUALS DARE
+		//ELSE page == DARE
 	}
 	function showChoice(json) //show choice
 	{
