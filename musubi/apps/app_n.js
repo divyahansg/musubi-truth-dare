@@ -71,9 +71,12 @@ Musubi.ready(function(context) {
 				var truth_obj = new SocialKit.DbObj(temp_truth[i]);
 				var nested = truth_obj.query("type='answer'");
 				if(nested.length ==0)
+				{
 					arr.push(truth_obj);
+				}
 			}
 			var rand = Math.random(arr.length);
+			alert(rand);
 			console.log(arr[rand]);
 			//$("#current_truth").append(rand_truth);
 		}
