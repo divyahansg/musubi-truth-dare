@@ -27,8 +27,11 @@ Musubi.ready(function(context) {
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}); //global
       musu.appContext.feed.post(start_obj);
       
-      var userID = context.user["id"];
+      var userID = context.user['id'];
+      console.log("userID = " + userID);
       start_obj_DbObj = new SocialKit.DbObj({type : "truth_dare_state", json: content});
+      console.log("context = " + JSON.stringify(context));
+      console.log("context.user[name] = " + context.user['name']);
       var user_json = {"type": "user", "id": userID, "name" : context.user['name']};
       user_obj = new SocialKit.Obj(user_json);
       start_obj_DbObj.post(user_obj);
