@@ -42,6 +42,7 @@ Musubi.ready(function(context) {
       
       		start_obj_DbObj.post(user_obj);
       		var test_user_obj = start_obj_DbObj.query("type='user'");
+      		console.log("test_user_obj_things = " + JSON.stringify(test_user_obj));
       		console.log("test_user_obj.length = " + test_user_obj.length);
 		}
 
