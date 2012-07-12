@@ -34,8 +34,8 @@ Musubi.ready(function(context) {
       var user_json = {"id" : userID, "name" : context.user['name']};
       user_obj = new SocialKit.Obj({type: "user", json: user_json});
       console.log((user_obj));
-      var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
-      console.log("data = " + data);
+      var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1");//[0]
+      console.log("data = " + JSON.stringify(data));
       start_obj_DbObj = new SocialKit.DbObj(data); 
       //console.log("start_obj_DbObj = " + start_obj_DbObj);
       
