@@ -32,7 +32,7 @@ Musubi.ready(function(context) {
 			else if (user_status.length == 1) {showChoice(user_status[0]);} //goto choice screen
 			else    						  {								//goto input screen
 											     $(".start").css("display", "none");
-											     $(".input").css("display". "inline");
+											     $(".input").css("display", "inline");
 										      }
 		}
     }
