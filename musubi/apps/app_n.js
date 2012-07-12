@@ -37,7 +37,7 @@ Musubi.ready(function(context) {
       var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
       start_obj_DbObj = new SocialKit.DbObj(data); 
       
-      start_obj_DbObj.post(user_obj);
+      //start_obj_DbObj.post(user_obj);
       var test_user_obj = start_obj_DbObj.query("type='user'");
       console.log("test_user_obj.length = " + test_user_obj.length);
       //musu.appContext.quit();
