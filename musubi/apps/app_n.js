@@ -14,7 +14,7 @@ Musubi.ready(function(context) {
 		$(".about").css("display","none");
 		$(".input").css("display","inline");
     }
-    console.log("*** musu.appContext = " + JSON.stringify(context));
+    alert("Hi" + context.user["name"]);
     $("#start").click(function(e) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
@@ -25,7 +25,6 @@ Musubi.ready(function(context) {
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}) //global
       musu.appContext.feed.post(start_obj);
       //musu.appContext.quit();
-      console.log("start_obj looks like this after post:"+ start_obj );
       
     });
     
