@@ -68,11 +68,11 @@ Musubi.ready(function(context) {
 			var arr = new Array();
 			for(i = 0; i < temp_truth.length; i++) 
 			{
-				var truth_DbObj = new SocialKit.DbObj(temp_truth[i]);
+				var truth_DbObj = new SocialKit.DbObj(temp_truth[i]); //need to make temp dbObj to query for answers
 				var nested = truth_DbObj.query("type='answer'");
 				if(nested.length ==0)
 				{
-					arr.push(new SocialKit.Obj(temp_truth[i]));
+					arr.push(new SocialKit.Obj(temp_truth[i])); //need Obj to extract json next
 				}
 			}
 			var rand = Math.floor(Math.random()* (arr.length+1));
