@@ -32,15 +32,16 @@ Musubi.ready(function(context) {
 	  
 	  var user_obj = makeUser(context);
 	  console.log("=============USER IS: " + user_obj);
+	  
+	  var start_obj_DbObj;
 	       
-      setTimeout(func, 100);
-      var test_user_obj;
+      setTimeout(func, 1000);
 		function func() {
     		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
-		    var start_obj_DbObj = new SocialKit.DbObj(data); 
+		    start_obj_DbObj = new SocialKit.DbObj(data); 
 		    console.log("=======================start_obj_Dbobj before posting is: " + start_obj_DbObj);
-      		start_obj_DbObj.post(user_obj);
 		}
+      start_obj_DbObj.post(user_obj);
       //musu.appContext.quit();
       
     });
