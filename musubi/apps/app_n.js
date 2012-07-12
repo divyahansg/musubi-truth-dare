@@ -4,8 +4,10 @@ function MusuWriter(app) {
 
 var musu;
 var start_obj_DbObj; //global
+var user_obj;		 //global
 Musubi.ready(function(context) {
     musu = new MusuWriter(context);
+    
     
     var state_data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1");
     if(state_data.length > 0)
@@ -22,8 +24,14 @@ Musubi.ready(function(context) {
       var text = "game started!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
-      var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}) //global
+      var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}); //global
       musu.appContext.feed.post(start_obj);
+      
+      var userID = context.user["id"];
+      start_obj_DbObj = new SocialKit.DbObj({type : "truth_dare_state", json: content});
+      var user_json = {"type": "user", "id": userID, "name" : context.user['name']};
+      user_obj = new SocialKit.Obj(user_json);
+      start_obj_DbObj.post(user_obj);
       //musu.appContext.quit();
       
     });
