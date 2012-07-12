@@ -3,8 +3,6 @@ function MusuWriter(app) {
 }
 
 var musu;
-var start_obj_DbObj; //global
-var user_obj;		 //global
 Musubi.ready(function(context) {
     musu = new MusuWriter(context);
     
@@ -15,6 +13,10 @@ Musubi.ready(function(context) {
     	$(".start").css("display","none");
 		$(".about").css("display","none");
 		$(".input").css("display","inline");
+		
+		var start_obj_DbObj = new SocialKit.DbObj(state_data[0]); 
+		var user = getUser(context);
+		console.log("=============================THIS IS THE USER AND HIS NAME IS: " + user.json['name']);
     }
     //alert("Hi " + context.user["name"] + "!");
     $("#start").click(function(e) {
@@ -27,19 +29,14 @@ Musubi.ready(function(context) {
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}); //global
       musu.appContext.feed.post(start_obj);
       
-      var userID = context.user['id'];
-      console.log("userID = " + userID);
-  
-      console.log("context.user[name] = " + context.user['name']);
-      var user_json = {"id" : userID, "name" : context.user['name']};
-      user_obj = new SocialKit.Obj({type: "user", json: user_json});
-      console.log((user_obj));      
+	  
+	  var user_obj = makeUser(context);
+	       
       setTimeout(func, 100);
       var test_user_obj;
 		function func() {
     		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
-    		console.log("data = " + JSON.stringify(data));
-		    start_obj_DbObj = new SocialKit.DbObj(data); 
+		    var start_obj_DbObj = new SocialKit.DbObj(data); 
       		start_obj_DbObj.post(user_obj);
 		}
       //musu.appContext.quit();
@@ -64,7 +61,7 @@ Musubi.ready(function(context) {
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
       
       var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
-      start_obj_DbObj = new SocialKit.DbObj(data);
+      var start_obj_DbObj = new SocialKit.DbObj(data);
       start_obj_DbObj.post(truth_obj);
       start_obj_DbObj.post(dare_obj);
       
@@ -98,6 +95,28 @@ Musubi.ready(function(context) {
 			$("#current_truth").append(arr[rand].json['text'] + " asked by: " + arr[rand].json['src_user']);
 		}
 	});
+    function makeUser(context)
+    {
+      var userID = context.user['id'];  
+      var user_json = {"id" : userID, "name" : context.user['name']};
+      user_obj = new SocialKit.Obj({type: "user", json: user_json});
+	  return user_obj;
+    }
+    function getUser(context)
+    {
+      var data = context.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
+	  var start_obj_DbObj = new SocialKit.DbObj(data); 
+	  var arr = new Array();
+	  var user_arr = start_obj_DbObj.query("type = 'user'");
+	  for(i =0; i < user_arr.length; i++) {
+	  	temp_user = new SocialKit.Obj(user_arr[i]);
+	  	temp_ID = temp_user.id;
+	  	if(temp_ID == context.user['id']) {
+	  		return temp_user;
+	  	}
+	  }
+	  return null;
+    }
     
     
 });
