@@ -75,7 +75,7 @@ Musubi.ready(function(context) {
 					arr.push(truth_obj);
 				}
 			}
-			var rand = Math.random(arr.length);
+			var rand = Math.floor(Math.random()* (arr.length+1));
 			alert(rand);
 			console.log(arr[rand]);
 			//$("#current_truth").append(rand_truth);
