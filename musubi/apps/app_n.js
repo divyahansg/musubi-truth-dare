@@ -2,6 +2,8 @@ function MusuWriter(app) {
   this.appContext = app;
 }
 
+
+
 var musu;
 Musubi.ready(function(context) {
     musu = new MusuWriter(context);
@@ -16,6 +18,15 @@ Musubi.ready(function(context) {
 		
 		var start_obj_DbObj = new SocialKit.DbObj(state_data[0]); 
 		var user = getUser(context);
+		if(user == null)
+		{
+			user = makeUser(context);
+			start_obj_DbObj.post(user);
+		}
+		else
+		{
+			
+		}
 		console.log("=============================THIS IS THE USER AND HIS NAME IS: " + user.json['name']);
     }
     //alert("Hi " + context.user["name"] + "!");
@@ -124,6 +135,25 @@ Musubi.ready(function(context) {
     
     
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $(function(){
 	$("#about").click(function(e) {
 		$(".start").css("display","none");
