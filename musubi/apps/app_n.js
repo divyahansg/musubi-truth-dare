@@ -76,8 +76,7 @@ Musubi.ready(function(context) {
 				}
 			}
 			var rand = Math.floor(Math.random()* (arr.length+1));
-			alert(arr[rand].json['text']);
-			console.log(arr[rand]);
+			console.log(arr.length);
 			//$("#current_truth").append(rand_truth);
 		}
 	});
