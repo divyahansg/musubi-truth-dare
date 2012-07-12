@@ -14,7 +14,7 @@ Musubi.ready(function(context) {
 		$(".about").css("display","none");
 		$(".input").css("display","inline");
     }
-    console.log("*** musu.appContext = " + context);
+    console.log("*** musu.appContext = " + JSON.stringify(context));
     $("#start").click(function(e) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
