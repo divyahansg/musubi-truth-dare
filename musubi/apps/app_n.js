@@ -14,7 +14,7 @@ Musubi.ready(function(context) {
 		$(".about").css("display","none");
 		$(".input").css("display","inline");
     }
-    //alert("Hi " + context.user["name"] + "!");
+    
     $("#start").click(function(e) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
@@ -73,7 +73,7 @@ Musubi.ready(function(context) {
 					arr.push(new SocialKit.Obj(temp_truth[i])); //need Obj to extract json next
 				}
 			}
-			var rand = Math.floor(Math.random()* (arr.length));
+			var rand = Math.floor(Math.random() * (arr.length));
 			console.log("arr.length = " + arr.length);
 			console.log("arr["+rand+"] = " + arr[rand]);
 			console.log("arr["+rand+"].json.text = " + arr[rand].json['text']);
