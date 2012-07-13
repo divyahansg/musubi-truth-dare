@@ -43,7 +43,7 @@ Musubi.ready(function(context) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
       style += "color:red;";
-      var text = "game started!";
+      var text = "Game started!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
@@ -129,6 +129,9 @@ Musubi.ready(function(context) {
 		    $(".choice").css("display","none"); //display truth_page for answering
 		}
 	});
+	
+	
+	
     function makeUser(context)
     {
       var userID = context.user['id'];   //get player's ID
