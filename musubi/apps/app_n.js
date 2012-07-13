@@ -2,75 +2,112 @@ function MusuWriter(app) {
   this.appContext = app;
 }
 
+
+
 var musu;
-var start_obj_DbObj; //global
 Musubi.ready(function(context) {
     musu = new MusuWriter(context);
+    
     
     var state_data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1");
     if(state_data.length > 0)
     {
-    	$(".start").css("display","none");
-		$(".about").css("display","none");
-		$(".input").css("display","inline");
+		var start_obj_DbObj = new SocialKit.DbObj(state_data[0]);  //Zero-ith game!
+		var user_data = getUser(context); //preexisting user status (json representation of a user)
+		if(user_data == null) //not joined
+		{
+			var user = makeUser(context); //make
+			start_obj_DbObj.post(user); //nest to game
+			$(".start").css("display","none");
+			$(".input").css("display","inline"); //direct to input
+		}
+		else
+		{
+			var user = new SocialKit.DbObj(user_data); //get user obj
+			var user_status = user.query("type='progress'"); //query state
+			
+			//DEPENDENT ON QUERY ORDER
+			if 		(user_status.length == 3) {showDone(user_status[2]);} //MAKE DONE OBJECT AFTER ANSWERING
+			else if (user_status.length == 2) {showAnswer(user_status[1]);} //goto answer screen
+			else if (user_status.length == 1) {showChoice(user_status[0]);} //goto choice screen
+			else    						  {								//goto input screen
+											     $(".start").css("display", "none");
+											     $(".input").css("display", "inline");
+										      }
+		}
     }
     
     $("#start").click(function(e) {
+    
+      //post game start notification
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
       style += "color:red;";
       var text = "game started!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
-      var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content}) //global
-      musu.appContext.feed.post(start_obj);
-      //musu.appContext.quit();
+      var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
+      musu.appContext.feed.post(start_obj); //post game start
       
+	  
+	  var user_obj = makeUser(context);    //person starting game
+	  console.log("=============USER IS: " + user_obj);
+	       
+      setTimeout(func, 1000);
+		function func() {
+    		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
+		    var start_obj_DbObj = new SocialKit.DbObj(data); 
+		    console.log("=======================start_obj_Dbobj before posting is: " + start_obj_DbObj);
+		    start_obj_DbObj.post(user_obj); //adding starting player to game
+		    console.log("========================================== posted");
+		}
+		
+	  $(".start").css("display","none"); //goto input screen
+	  $(".about").css("display","none");
+	  $(".input").css("display","inline");      
     });
     
-    
-    $("#submit").click(function(e) {
-      if($("#truth").val().length == 0 ||  $("#dare").val().length == 0)
+    //submit input
+    $("#submit").click(function(e) { 
+      if($("#truth").val().length == 0 ||  $("#dare").val().length == 0) //check if empty
       {
         alert("Please input a truth and a dare.");
         return;
       }
       var truth_text = $("#truth").val();
-      var html = '<span>' + truth_text + '</span>';
-      var truth_content = { "__html" : html, "text" : truth_text, "src_user": context.user["name"]};
-      var truth_obj = new SocialKit.Obj({type : "truth", json: truth_content});
+      var truth_content = {"text" : truth_text, "src_user": context.user["name"]};
+      var truth_obj = new SocialKit.Obj({type : "truth", json: truth_content}); //create truth obj
       
       var dare_text = $("#dare").val();
-      html = '<span>' + dare_text + '</span>';
-      var dare_content = { "__html" : html, "text" : dare_text, "src_user": context.user["name"]};
-      var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content});
+      var dare_content = {"text" : dare_text, "src_user": context.user["name"]};
+      var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content}); //create dare obj
       
-      var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0];
-      start_obj_DbObj = new SocialKit.DbObj(data);
-      start_obj_DbObj.post(truth_obj);
-      start_obj_DbObj.post(dare_obj);
+      var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //get game state for posting t/d
+      var start_obj_DbObj = new SocialKit.DbObj(data); //make dbobj of state
+      start_obj_DbObj.post(truth_obj); //post t
+      start_obj_DbObj.post(dare_obj); //post d
       
-      //var temp_truth = new SocialKit.Obj(start_obj_DbObj.query("type='truth'")[0]);
-      //var temp_dare = new SocialKit.Obj(start_obj_DbObj.query("type='dare'")[0]);
-      //var truth_info = temp_truth.json['text'];
-      //var dare_info = temp_truth.json['text'];
+      var user = new SocialKit.DbObj(getUser(context)); //get user obj to nest choice progress
+      var choice_obj = new SocialKit.Obj({type: "progress"}); //make progress obj (choice)
+      user.post(choice_obj); //posted
+      console.log("============POSTED CHOICE OBJ");
       
-      $(".choice").css("display","inline");
-	  $(".input").css("display","none");
+      $(".input").css("display", "none");
+      $(".choice").css("display", "inline"); //display choice screen
 	});
 	
-	$("#truth_button").click(function(e) {
-		var temp_truth = start_obj_DbObj.query("type='truth'");
-		if(temp_truth.length > 0)
+	$("#truth_button").click(function(e) { //if clicked truth on choice
+		var temp_truth = start_obj_DbObj.query("type='truth'"); //get all truths (array of json truths)
+		if(temp_truth.length > 0) //if truth submitted - default
 		{
-			var arr = new Array();
+			var arr = new Array(); //array of open truths
 			for(i = 0; i < temp_truth.length; i++) 
 			{
 				var truth_DbObj = new SocialKit.DbObj(temp_truth[i]); //need to make temp dbObj to query for answers
-				var nested = truth_DbObj.query("type='answer'");
-				if(nested.length ==0)
+				var nested = truth_DbObj.query("type='taken'");
+				if(nested.length == 0)
 				{
-					arr.push(new SocialKit.Obj(temp_truth[i])); //need Obj to extract json next
+					arr.push(temp_truth[i]); //store json for populating answer page
 				}
 			}
 			var rand = Math.floor(Math.random() * (arr.length));
@@ -78,33 +115,82 @@ Musubi.ready(function(context) {
 			console.log("arr["+rand+"] = " + arr[rand]);
 			console.log("arr["+rand+"].json.text = " + arr[rand].json['text']);
 			$("#current_truth").append(arr[rand].json['text'] + " asked by: " + arr[rand].json['src_user']);
+
+			var rand = Math.floor(Math.random() * (arr.length)); //rand index
+			var truth_json = (new SocialKit.Obj(arr[rand])).json; //random truth json from obj json rep (meta-JSON) 
+			console.log("arr["+rand+"] = " + truth_json); //console json
+			console.log("arr["+rand+"].json.text = " + truth_json['text']); //console truth text of json truth
+			$("#current_truth").append(truth_json['text'] + " asked by: " + truth_json['src_user']); //fill answer-div with rand truth and user
+			
+			var current_truth = new SocialKit.DbObj(arr[rand]); //making dbobj for nesting answered under truth 
+			var taken_obj = new SocialKit.Obj({type: "taken", json: {}}); //make taken obj to nest under answer
+			current_truth.post(taken_obj); //post under truth
+			
+			var user = new SocialKit.DbObj(getUser(context)); //get user to put answer under it 
+			var answer_json = {"screen_type" : "truth", "text" : arr[rand].json['text'], "truth_src": arr[rand].json['src_user']}; //make answer json
+			var answer_obj = new SocialKit.Obj({type: "progress", json : answer_json}); //make answer obj
+			user.post(answer_obj); //put under user
+			
+			$(".truth_page").css("display","inline");
+		    $(".choice").css("display","none"); //display truth_page for answering
 		}
 	});
-    
-    
+    function makeUser(context)
+    {
+      var userID = context.user['id'];   //get player's ID
+      var user_json = {"id" : userID, "name" : context.user['name']}; //make player json
+      user_obj = new SocialKit.Obj({type: "user", json: user_json}); //make player obj
+	  return user_obj; //return obj
+    }
+    function getUser(context)
+    {
+      var data = context.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //query for game state
+	  var start_obj_DbObj = new SocialKit.DbObj(data);  //construct game state
+	  var user_arr = start_obj_DbObj.query("type = 'user'"); //get all users as array of user json
+	  console.log("================================USERS IN GETUSER IS = " + JSON.stringify(user_arr)); //console found user array
+	  for(i =0; i < user_arr.length; i++) {
+	  	temp_user = new SocialKit.Obj(user_arr[i]); //make temp user obj
+	  	temp_ID = temp_user.json['id']; //get temp user obj ID
+	  	if(temp_ID == context.user['id']) { //match temp with user
+	  		return user_arr[i]; //return user json
+	  	}
+	  }
+	  return null; //no match; null
+    }
+    function showDone(json)
+    {
+    	$(".start").css("display","none");
+    	$(".truth_page").css("display","none"); //display done
+	}
+	function showAnswer(answer_json) //param: answer obj json
+	{
+	    $(".start").css("display","none");
+		var answer_obj = new SocialKit.Obj(answer_json); //make answer obj to get json
+		var json = answer_obj.json; //get json
+	    var page = json['screen_type']; //get screentype from json INSIDE answer obj
+	    if (page == "truth") //if truth
+	    {
+	    	$("#current_truth").append(json['text'] + " asked by: " + json['truth_src']); //fill answer page
+	    	$(".truth_page").css("display","inline"); //show truth-answer page
+		}
+		//ELSE page == DARE
+	}
+	function showChoice(json) //show choice
+	{
+		$(".start").css("display","none");
+		$(".choice").css("display","inline");
+	}
 });
+
 $(function(){
 	$("#about").click(function(e) {
 		$(".start").css("display","none");
 		$(".about").css("display","inline");
 		$(".input").css("display","none");
 	});
-	$("#start").click(function(e) {
-		$(".start").css("display","none");
-		$(".about").css("display","none");
-		$(".input").css("display","inline");
-	});
 	$("#return").click(function(e) {
 		$(".start").css("display","inline");
 		$(".about").css("display","none");
 		$(".input").css("display","none");
-	});
-    $("#truth_button").click(function(e) {
-		$(".truth_page").css("display","inline");
-		$(".choice").css("display","none");
-	});
-	$("#dare_button").click(function(e) {
-		$(".truth_page").css("display","inline");
-		$(".choice").css("display","none");
 	});
 });
