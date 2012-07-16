@@ -138,8 +138,24 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#submit_truth").click(function(e) {
+		var answer = $("#truth_answer").val(); //pull answer
+		if (answer.length == 0) //check if empty
+		{
+			alert("You need to submit an answer! rawr"); //reprimand
+			return;
+		}
+		
+		var user = new SocialKit.DbObj(getUser(context)); //get current user
+		var answer_obj = new SocialKit.Obj(user.query("type='progress'")[1]); //get json representation of answer obj
+		var text = answer_obj.json['text']; //grab statement
+		var screen_type = answer_obj.json['screen_type']; //grab type of task (t or d)
+		
+		var done_json = {"screen_type": screen_type, "statement": text, "answer": answer}; //create json for done obj
+		var done_obj = new SocialKit.Obj({type: "progress", json: done_json}); //create done obj
+		user.post(done_obj); //append to user
+		
 		$(".dashboard").css("display","inline");
-		$(".truth_page").css("display","none");
+		$(".truth_page").css("display","none"); //show dashboard page
 	});
 	
 	
