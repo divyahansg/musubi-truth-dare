@@ -169,6 +169,27 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#refresh").click(function(e) {
+	
+		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
+		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
+		
+		var users = start_obj_DbObj.query("type='user'"); //getting all users
+		for (i=0; i<users.length; i++) //looping through all users
+		{
+			var temp_user_dbobj = new SocialKit.DbObj(users[i]); //creating DbObj of user
+			var temp_user_obj = new SocialKit.Obj(users[i]); //creating Obj of user
+			var name = temp_user_obj.json['name']; //getting name
+			var temp_progress = temp_user_dbobj.query("type='progress'"); //getting current state of user
+			if (temp_progress.length == 3) //if done
+			{
+				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done object
+				var text = done_obj.json['statement']; //getting statement text
+				var answer = done_obj.json['answer']; //getting answer
+				$("#list").append("<li><b>" + name + "</b> answered <i>" + text + "</i></br>&nbsp;" + answer + "</br></br></li>"); //putting in page
+			}
+		}
+		
+		
 		$(".dashboard").css("display","inline");
 		$(".truth_page").css("display","none");
 	});
