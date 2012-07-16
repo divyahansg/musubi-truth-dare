@@ -147,6 +147,11 @@ Musubi.ready(function(context) {
 		}
 	});
 	
+	$("#dare_button").click(function(e) {
+		$(".choice").css("display","none");
+		$(".dare_page").css("display","inline");
+	});
+	
 	$("#submit_truth").click(function(e) {
 		var answer = $("#truth_answer").val(); //pull answer
 		if (answer.length == 0) //check if empty
