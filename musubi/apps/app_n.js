@@ -92,7 +92,7 @@ Musubi.ready(function(context) {
       user.post(choice_obj); //posted
       console.log("============POSTED CHOICE OBJ");
       
-      setTimeout(func, 1000);
+      setTimeout(func, 4000);
 		function func() {};
       
       $(".input").css("display", "none");
