@@ -245,6 +245,9 @@ Musubi.ready(function(context) {
 	
 	function showDone(json)
 	{
+	
+		refreshDash();
+		
 		$(".dashboard").css("display","inline");
 		$(".start").css("display","none"); //show done page
 	}
