@@ -182,11 +182,7 @@ Musubi.ready(function(context) {
 	  }
 	  return null; //no match; null
     }
-    function showDone(json)
-    {
-    	$(".start").css("display","none");
-    	$(".truth_page").css("display","none"); //display done
-	}
+    
 	function showAnswer(answer_json) //param: answer obj json
 	{
 	    $(".start").css("display","none");
@@ -209,7 +205,7 @@ Musubi.ready(function(context) {
 	function showDone(json)
 	{
 		$(".dashboard").css("display","inline");
-		$(".start").css("display","none");
+		$(".start").css("display","none"); //show done page
 	}
 });
 
