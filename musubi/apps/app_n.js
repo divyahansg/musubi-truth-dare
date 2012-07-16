@@ -92,10 +92,6 @@ Musubi.ready(function(context) {
       user.post(choice_obj); //posted
       console.log("============POSTED CHOICE OBJ");
       
-      setTimeout(func, 4000);
-		function func() {console.log("in loading timeout!!");
-		};
-      
       $(".input").css("display", "none");
       $(".choice").css("display", "inline"); //display choice screen
 	});
@@ -148,7 +144,6 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#dare_button").click(function(e) {
-		alert("lol");
 		$(".choice").css("display","none");
 		$(".dare_page").css("display","inline");
 	});
