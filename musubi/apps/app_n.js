@@ -205,6 +205,12 @@ Musubi.ready(function(context) {
 		$(".start").css("display","none");
 		$(".choice").css("display","inline");
 	}
+	
+	function showDone(json)
+	{
+		$(".dashboard").css("display","inline");
+		$(".start").css("display","none");
+	}
 });
 
 $(function(){
