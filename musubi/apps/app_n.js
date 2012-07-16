@@ -175,6 +175,7 @@ Musubi.ready(function(context) {
 			
 			$(".dare_page").css("display","inline");
 		    $(".choice").css("display","none"); //display dare_page for answering
+		 }
 	});
 	
 	$("#submit_truth").click(function(e) {
