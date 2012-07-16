@@ -97,6 +97,8 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#truth_button").click(function(e) { //if clicked truth on choice
+		var data = musu.appContext.feed.query("type='truth_dare_state'");
+		var start_obj_DbObj = new SocialKit.DbObj(data[0]);
 		var temp_truth = start_obj_DbObj.query("type='truth'"); //get all truths (array of json truths)
 		
 		if (temp_truth.length != context.feed.members.length)
