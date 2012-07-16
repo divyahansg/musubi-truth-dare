@@ -98,6 +98,13 @@ Musubi.ready(function(context) {
 	
 	$("#truth_button").click(function(e) { //if clicked truth on choice
 		var temp_truth = start_obj_DbObj.query("type='truth'"); //get all truths (array of json truths)
+		
+		if (temp_truth.length != context.feed.members.length)
+		{
+			alert("Still Waiting on " + (context.feed.members.length - temp_truth.length) " members to answer!");
+			return;
+		}
+		
 		if(temp_truth.length > 0) //if truth submitted - default
 		{
 			var arr = new Array(); //array of open truths
