@@ -43,7 +43,7 @@ Musubi.ready(function(context) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
       style += "color:red;";
-      var text = "game started!";
+      var text = "Game started!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
@@ -92,12 +92,22 @@ Musubi.ready(function(context) {
       user.post(choice_obj); //posted
       console.log("============POSTED CHOICE OBJ");
       
+      setTimeout(func, 1000);
+		function func() {};
+      
       $(".input").css("display", "none");
       $(".choice").css("display", "inline"); //display choice screen
 	});
 	
 	$("#truth_button").click(function(e) { //if clicked truth on choice
 		var temp_truth = start_obj_DbObj.query("type='truth'"); //get all truths (array of json truths)
+		
+		if (temp_truth.length != context.feed.members.length)
+		{
+			alert("Still waiting on " + (context.feed.members.length - temp_truth.length) + " member(s) to answer!");
+			return;
+		}
+		
 		if(temp_truth.length > 0) //if truth submitted - default
 		{
 			var arr = new Array(); //array of open truths
@@ -135,6 +145,30 @@ Musubi.ready(function(context) {
 		    $(".choice").css("display","none"); //display truth_page for answering
 		}
 	});
+	
+	$("#submit_truth").click(function(e) {
+		var answer = $("#truth_answer").val(); //pull answer
+		if (answer.length == 0) //check if empty
+		{
+			alert("You need to submit an answer! rawr"); //reprimand
+			return;
+		}
+		
+		var user = new SocialKit.DbObj(getUser(context)); //get current user
+		var answer_obj = new SocialKit.Obj(user.query("type='progress'")[1]); //get json representation of answer obj
+		var text = answer_obj.json['text']; //grab statement
+		var screen_type = answer_obj.json['screen_type']; //grab type of task (t or d)
+		
+		var done_json = {"screen_type": screen_type, "statement": text, "answer": answer}; //create json for done obj
+		var done_obj = new SocialKit.Obj({type: "progress", json: done_json}); //create done obj
+		user.post(done_obj); //append to user
+		
+		$(".dashboard").css("display","inline");
+		$(".truth_page").css("display","none"); //show dashboard page
+	});
+	
+	
+	
     function makeUser(context)
     {
       var userID = context.user['id'];   //get player's ID
@@ -157,11 +191,7 @@ Musubi.ready(function(context) {
 	  }
 	  return null; //no match; null
     }
-    function showDone(json)
-    {
-    	$(".start").css("display","none");
-    	$(".truth_page").css("display","none"); //display done
-	}
+    
 	function showAnswer(answer_json) //param: answer obj json
 	{
 	    $(".start").css("display","none");
@@ -179,6 +209,12 @@ Musubi.ready(function(context) {
 	{
 		$(".start").css("display","none");
 		$(".choice").css("display","inline");
+	}
+	
+	function showDone(json)
+	{
+		$(".dashboard").css("display","inline");
+		$(".start").css("display","none"); //show done page
 	}
 });
 
