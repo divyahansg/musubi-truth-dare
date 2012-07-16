@@ -101,7 +101,7 @@ Musubi.ready(function(context) {
 		
 		if (temp_truth.length != context.feed.members.length)
 		{
-			alert("Still Waiting on " + (context.feed.members.length - temp_truth.length) " members to answer!");
+			alert("Still Waiting on " + (context.feed.members.length - temp_truth.length) + " members to answer!");
 			return;
 		}
 		
