@@ -148,6 +148,7 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#dare_button").click(function(e) {
+		alert("lol");
 		$(".choice").css("display","none");
 		$(".dare_page").css("display","inline");
 	});
