@@ -141,6 +141,8 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#dare_button").click(function(e) {
+		var data = musu.appContext.feed.query("type='truth_dare_state'");
+		var start_obj_DbObj = new SocialKit.DbObj(data[0]);
 		var temp_dare = start_obj_DbObj.query("type='dare'"); //get all dares (array of json truths)
 		
 		if (temp_dare.length != context.feed.members.length)
