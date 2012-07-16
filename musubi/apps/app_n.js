@@ -170,6 +170,15 @@ Musubi.ready(function(context) {
 	
 	$("#refresh").click(function(e) {
 	
+		refreshDash(); //refresh dash info
+		
+		$(".dashboard").css("display","inline");
+		$(".truth_page").css("display","none"); //show dashboard page
+	});
+	
+	function refreshDash()
+	{
+		$("#list").empty();
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
 		
@@ -188,13 +197,7 @@ Musubi.ready(function(context) {
 				$("#list").append("<li><b>" + name + "</b> answered <i>" + text + "</i></br>&nbsp;" + answer + "</br></br></li>"); //putting in page
 			}
 		}
-		
-		
-		$(".dashboard").css("display","inline");
-		$(".truth_page").css("display","none");
-	});
-	
-	
+	}
 	
     function makeUser(context)
     {
