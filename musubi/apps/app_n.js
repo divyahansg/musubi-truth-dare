@@ -164,6 +164,8 @@ Musubi.ready(function(context) {
 		var done_obj = new SocialKit.Obj({type: "progress", json: done_json}); //create done obj
 		user.post(done_obj); //append to user
 		
+		refreshDash();
+		
 		$(".dashboard").css("display","inline");
 		$(".truth_page").css("display","none"); //show dashboard page
 	});
