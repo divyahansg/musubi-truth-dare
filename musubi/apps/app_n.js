@@ -101,7 +101,7 @@ Musubi.ready(function(context) {
 		
 		if (temp_truth.length != context.feed.members.length)
 		{
-			alert("Still Waiting on " + (context.feed.members.length - temp_truth.length) + " members to answer!");
+			alert("Still waiting on " + (context.feed.members.length - temp_truth.length) + " member(s) to answer!");
 			return;
 		}
 		
@@ -135,6 +135,11 @@ Musubi.ready(function(context) {
 			$(".truth_page").css("display","inline");
 		    $(".choice").css("display","none"); //display truth_page for answering
 		}
+	});
+	
+	$("#submit_truth").click(function(e) {
+		$(".dashboard").css("display","inline");
+		$(".truth_page").css("display","none");
 	});
 	
 	
