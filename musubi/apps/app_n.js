@@ -167,6 +167,11 @@ Musubi.ready(function(context) {
 		$(".truth_page").css("display","none"); //show dashboard page
 	});
 	
+	$("#refresh").click(function(e) {
+		$(".dashboard").css("display","inline");
+		$(".truth_page").css("display","none");
+	}
+	
 	
 	
     function makeUser(context)
