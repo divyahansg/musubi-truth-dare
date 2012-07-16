@@ -93,7 +93,7 @@ Musubi.ready(function(context) {
       console.log("============POSTED CHOICE OBJ");
       
       setTimeout(func, 4000);
-		function func() {};
+		function func() {console.log("in timeout!");};
       
       $(".input").css("display", "none");
       $(".choice").css("display", "inline"); //display choice screen
