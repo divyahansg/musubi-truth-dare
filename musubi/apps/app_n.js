@@ -170,7 +170,7 @@ Musubi.ready(function(context) {
 	$("#refresh").click(function(e) {
 		$(".dashboard").css("display","inline");
 		$(".truth_page").css("display","none");
-	}
+	});
 	
 	
 	
