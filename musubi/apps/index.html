@@ -66,9 +66,10 @@
 				<center>
 					<h1>Your Current Truth is:</h1> 
 					<div id="current_truth"></div>
-					<br />
-					Answer:  <input type="text" id="truth_answer" name="dare" placeholder="e.g. I like Suzy" size="27">
-					<br /><br />
+					<div data-role="fieldcontain">
+    					<label for="answer_box">Enter an Answer: &nbsp;&nbsp;&nbsp;</label>
+    					<input type="text" name="answer_box" id="submit_truth" value="" placeholder="e.g. I like Suzy." />
+    				</div>
 					<a href="#" id="submit_truth" data-role="button" data-inline="true">Submit</a>
 				</center>
 			</div>
