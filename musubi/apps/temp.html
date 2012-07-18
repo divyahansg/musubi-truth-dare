@@ -27,9 +27,10 @@
 	</div>
 	<a href="#" id="refresh" data-role="button" data-inline="true" data-icon="info">Refresh</a>
 	<script>
-		$("#refresh").click(function(e) {
+		$("#refresh").bind("click", function(e)
+	    {
 			$("#truth_list").append("<li><h3>Steven Weber</h3></li><hr>");
-				$.mobile.changePage("temp.html");
+			$.mobile.changePage("temp.html");
 		});
 	</script>
 
