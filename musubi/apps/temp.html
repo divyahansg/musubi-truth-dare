@@ -18,7 +18,7 @@
 </head> 
 <body> 
 
-	<div data-role="page">
+	<div data-role="page" id="blah">
 
 	<div data-role="content">
 		<ul data-role="listview" data-theme="d" data-divider-theme="a" id="truth_list">
@@ -30,7 +30,7 @@
 		$("#refresh").bind("click", function(e)
 	    {
 			$("#truth_list").append("<li><h3>Steven Weber</h3></li><hr>");
-			$.mobile.changePage("temp.html");
+			$.mobile.changePage($("#blah"));
 		});
 	</script>
 
