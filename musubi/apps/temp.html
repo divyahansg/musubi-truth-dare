@@ -18,19 +18,19 @@
 </head> 
 <body> 
 
-	<div data-role="page" id="blah">
+	<div data-role="page">
 
-	<div data-role="content">
+	<div data-role="content" id="blah">
 		<ul data-role="listview" data-theme="d" data-divider-theme="a" id="truth_list">
 			<li data-role="list-divider">Completed Truths</li>
 		</ul><br/><br/>
 	</div>
 	<a href="#" id="refresh" data-role="button" data-inline="true" data-icon="info">Refresh</a>
 	<script>
-		$("#refresh").bind("click", function(e)
+		$("#refresh").click(function(e)
 	    {
 			$("#truth_list").append("<li><h3>Steven Weber</h3></li><hr>");
-			//$.changePage($("#blah"));
+			$.changePage($("#blah"));
 		});
 	</script>
 
