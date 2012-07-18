@@ -119,9 +119,6 @@ Musubi.ready(function(context) {
 					arr.push(temp_truth[i]); //store json for populating answer page
 				}
 			}
-			var rand = Math.floor(Math.random() * (arr.length));
-			$("#current_truth").append(arr[rand].json['text'] + " asked by: " + arr[rand].json['src_user']);
-
 			var rand = Math.floor(Math.random() * (arr.length)); //rand index
 			var truth_json = (new SocialKit.Obj(arr[rand])).json; //random truth json from obj json rep (meta-JSON) 
 			$("#current_truth").append(truth_json['text'] + " asked by: " + truth_json['src_user']); //fill answer-div with rand truth and user
@@ -163,9 +160,6 @@ Musubi.ready(function(context) {
 					arr.push(temp_dare[i]); //store json for populating answer page
 				}
 			}
-			var rand = Math.floor(Math.random() * (arr.length));
-			$("#current_dare").append(arr[rand].json['text'] + " asked by: " + arr[rand].json['src_user']);
-			
 			var current_dare = new SocialKit.DbObj(arr[rand]); //making dbobj for nesting answered under dare 
 			var taken_obj = new SocialKit.Obj({type: "taken", json: {}}); //make taken obj to nest under answer
 			current_dare.post(taken_obj); //post under dare
