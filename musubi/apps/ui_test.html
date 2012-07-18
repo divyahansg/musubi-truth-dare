@@ -43,10 +43,13 @@
 			<div class="input">
 				<center>
 					<br/>
-					Enter a truth: <input type="text" id="truth" name="truth" placeholder="e.g. What is your darkest secret?" size="27">
-					<br/>
-					Enter a dare:  <input type="text" id="dare" name="dare" placeholder="e.g. Lick a tree" size="27">
-					<br/><br />
+					
+					<div data-role="fieldcontain">
+    					<label for="truth_box">Enter a Truth:</label>
+    					<input type="text" name="truth_box" id="truth" value="" placeholder="e.g. What is your darkest secret?" />
+	    				<label for="dare_box">Enter a Dare:</label>
+    					<input type="text" name="dare_box" id="dare" value="" placeholder="e.g. Lick a tree" />
+					</div>	
  					<a href="#" id="submit" data-role="button" data-inline="true">Submit</a>
 				</center>
 			</div>
