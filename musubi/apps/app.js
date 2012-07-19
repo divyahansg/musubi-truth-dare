@@ -242,8 +242,8 @@ Musubi.ready(function(context) {
 				}
 			}
 		}
-		$("#truth_list").append(truth_list_content);
-		$("#dare_list").append(dare_list_content);
+		$("#truth_list").html(truth_list_content);
+		$("#dare_list").html(dare_list_content);
 		$("#truth_list").listview("refresh");
 		$("#dare_list").listview("refresh");
 	}
