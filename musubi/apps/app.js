@@ -121,7 +121,7 @@ Musubi.ready(function(context) {
 			}
 			var rand = Math.floor(Math.random() * (arr.length)); //rand index
 			var truth_json = (new SocialKit.Obj(arr[rand])).json; //random truth json from obj json rep (meta-JSON) 
-			$("#current_truth").append(truth_json['text'] + " asked by: " + truth_json['src_user']); //fill answer-div with rand truth and user
+			$("#current_truth").append("<strong>" + truth_json['text'] + "</strong><br /> asked by: " + truth_json['src_user']); //fill answer-div with rand truth and user
 			
 			var current_truth = new SocialKit.DbObj(arr[rand]); //making dbobj for nesting answered under truth 
 			var taken_obj = new SocialKit.Obj({type: "taken", json: {}}); //make taken obj to nest under answer
