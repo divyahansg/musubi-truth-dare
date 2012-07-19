@@ -212,10 +212,9 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		//var truth_list_content = $("#truth_list").html();
-		//var dare_list_content  = $("#dare_list").html();
-		$("#truth_list").empty();
-		$("#dare_list").empty();
+
+		$("#truth_list").remove("#temp");
+		$("#dare_list").remove("#temp");
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
 		
@@ -234,16 +233,14 @@ Musubi.ready(function(context) {
 				var screen_type = done_obj.json['screen_type'];
 				if (screen_type == "truth")
 				{
-					truth_list_content += "<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p></li>";
+					$("#truth_list").append("<li id='temp'><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p></li>");
 				}
 				else
 				{
-					dare_list_content += "<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></li>";
+					$("#dare_list").append("<li id='temp'><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></li>");
 				}
 			}
 		}
-		$("#truth_list").html(truth_list_content);
-		$("#dare_list").html(dare_list_content);
 		$("#truth_list").listview("refresh");
 		$("#dare_list").listview("refresh");
 	}
