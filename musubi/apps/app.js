@@ -183,7 +183,7 @@ Musubi.ready(function(context) {
 		var answer = $("#truth_answer").val(); //pull answer
 		if (answer.length == 0) //check if empty
 		{
-			alert("You need to submit an answer! rawr"); //reprimand
+			alert("You need to submit an answer!"); //reprimand
 			return;
 		}
 		
@@ -234,11 +234,12 @@ Musubi.ready(function(context) {
 				var screen_type = done_obj.json['screen_type'];
 				if (screen_type == "truth")
 				{
-					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p></li>");
+					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p><img src="www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png"/></li>");
+					
 				}
 				else
 				{
-					dare_content += ("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></li>");
+					dare_content += ("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src="www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png"/></p></li>");
 				}
 			}
 		}
