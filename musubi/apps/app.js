@@ -212,8 +212,8 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		var truth_list_content = $("#truth_list").html();
-		var dare_list_content  = $("#dare_list").html();
+		//var truth_list_content = $("#truth_list").html();
+		//var dare_list_content  = $("#dare_list").html();
 		$("#truth_list").empty();
 		$("#dare_list").empty();
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
