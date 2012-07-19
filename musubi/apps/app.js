@@ -212,9 +212,10 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-
-		$("#truth_list").remove("#temp");
-		$("#dare_list").remove("#temp");
+		var truth_content = "";
+		var dare_content = "";
+		$("#truth_list").empty();
+		$("#dare_list").empty();
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
 		
@@ -233,14 +234,18 @@ Musubi.ready(function(context) {
 				var screen_type = done_obj.json['screen_type'];
 				if (screen_type == "truth")
 				{
-					$("#truth_list").append("<li id='temp'><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p></li>");
+					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p></li>");
 				}
 				else
 				{
-					$("#dare_list").append("<li id='temp'><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></li>");
+					dare_content += ("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></li>");
 				}
 			}
 		}
+		$("#truth_list").append("<li data-role='list-divider'>Completed Truths</li>");
+		$("#dare_list").append("<li data-role='list-divider'>Completed Dares</li>");
+		$("#truth_list").append(truth_content);
+		$("#dare_list").append(dare_content);
 		$("#truth_list").listview("refresh");
 		$("#dare_list").listview("refresh");
 	}
