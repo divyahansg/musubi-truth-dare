@@ -232,7 +232,10 @@ Musubi.ready(function(context) {
 				var screen_type = done_obj.json['screen_type'];
 				if (screen_type == "truth")
 				{
-					$("#truth_list").append(truth_before + "<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+answer+"</p></li>");
+					if(i == 0)
+						$("#truth_list").append(truth_before + "<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+answer+"</p></li>");
+					else
+						$("#truth_list").append("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+answer+"</p></li>");
 					$("#truth_list").listview("refresh");
 				}
 				else
