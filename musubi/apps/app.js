@@ -234,12 +234,12 @@ Musubi.ready(function(context) {
 				var screen_type = done_obj.json['screen_type'];
 				if (screen_type == "truth")
 				{
-					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p><img src="www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png"/></li>");
+					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></li>");
 					
 				}
 				else
 				{
-					dare_content += ("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src="www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png"/></p></li>");
+					dare_content += ("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></p></li>");
 				}
 			}
 		}
