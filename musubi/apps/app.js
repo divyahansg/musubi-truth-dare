@@ -237,7 +237,7 @@ Musubi.ready(function(context) {
 				else
 				{
 					$("#dare_list").empty();
-					$("#dare_list").append("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+See File+"</p></li>");
+					$("#dare_list").append("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></li>");
 					$("#dare_list").listview("refresh");
 				}
 			}
