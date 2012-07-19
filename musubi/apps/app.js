@@ -212,8 +212,6 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		$("#truth_list").empty();
-		$("#dare_list").empty();
 		
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
@@ -235,6 +233,7 @@ Musubi.ready(function(context) {
 				{
 					$("#truth_list").append("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+answer+"</p></li>");
 					$("#truth_list").listview("refresh");
+					alert($("#dare_list").val());
 				}
 				else
 				{
