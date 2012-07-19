@@ -318,11 +318,9 @@ $(function(){
 	$("#about").click(function(e) {
 		$(".start").css("display","none");
 		$(".about").css("display","inline");
-		$(".input").css("display","none");
 	});
 	$("#return").click(function(e) {
 		$(".start").css("display","inline");
 		$(".about").css("display","none");
-		$(".input").css("display","none");
 	});
 });
