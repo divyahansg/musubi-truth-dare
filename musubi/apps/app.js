@@ -230,8 +230,7 @@ Musubi.ready(function(context) {
 				var screen_type = done_obj.json['screen_type'];
 				if (screen_type == "truth")
 				{
-					alert("lol");
-					$("#truth_list").append("<li><h3>Steven Weber</h3></li><hr>");
+					$("#truth_list").append("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+answer+"</p></li>");
 					$("#truth_list").listview("refresh");
 				}
 			}
