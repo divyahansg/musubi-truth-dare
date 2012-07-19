@@ -231,7 +231,7 @@ Musubi.ready(function(context) {
 				if (screen_type == "truth")
 				{
 					alert("lol");
-					$("#truth_list").append("<li><h3>" + name + "</h3></li>");
+					$("#truth_list").append("<li><h3>Steven Weber</h3></li>");
 					$("#truth_list").listview("refresh");
 				}
 			}
