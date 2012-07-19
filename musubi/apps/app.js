@@ -69,7 +69,7 @@ Musubi.ready(function(context) {
     
     //submit input
     $("#submit").click(function(e) { 
-      if($("#truth").val().length == 0 ||  $("#dare").val().length == 0) //check if empty
+      if($("#truth").val().length == 0 ||  $("#dare").val().length == 0 || $.trim($("#truth").val()).length == 0 || $.trim($("#dare").val()).length == 0) //check if empty
       {
         alert("Please input a truth and a dare.");
         return;
@@ -77,7 +77,7 @@ Musubi.ready(function(context) {
       var truth_text = $("#truth").val();
       $.trim(truth_text);
       truth_text = truth_text.substring(0,1).toUpperCase() + truth_text.substring(1);
-      if (truth_text.substring(truth_text.length()-1) != "?")
+      if (truth_text.substring(truth_text.length-1) != "?")
       {
       	truth_text += "?";
       }
@@ -85,6 +85,8 @@ Musubi.ready(function(context) {
       var truth_obj = new SocialKit.Obj({type : "truth", json: truth_content}); //create truth obj
       
       var dare_text = $("#dare").val();
+      $.trim(dare_text);
+      dare_text = dare_text.substring(0,1).toUpperCase() + dare_text.substring(1);
       var dare_content = {"text" : dare_text, "src_user": context.user["name"]};
       var dare_obj = new SocialKit.Obj({type : "dare", json: dare_content}); //create dare obj
       
