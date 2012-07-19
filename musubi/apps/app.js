@@ -233,7 +233,8 @@ Musubi.ready(function(context) {
 				{
 					$("#truth_list").append("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+answer+"</p></li>");
 					$("#truth_list").listview("refresh");
-					alert($("#dare_list").val());
+					alert($("#truth_list").html());
+					alert($("#truth_list").val());					
 				}
 				else
 				{
