@@ -75,6 +75,12 @@ Musubi.ready(function(context) {
         return;
       }
       var truth_text = $("#truth").val();
+      $.trim(truth_text);
+      truth_text = truth_text.substring(0,1).toUpperCase() + truth_text.substring(1);
+      if (truth_text.substring(truth_text.length()-1) != "?")
+      {
+      	truth_text += "?";
+      }
       var truth_content = {"text" : truth_text, "src_user": context.user["name"]};
       var truth_obj = new SocialKit.Obj({type : "truth", json: truth_content}); //create truth obj
       
