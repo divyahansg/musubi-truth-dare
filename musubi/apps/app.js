@@ -235,7 +235,6 @@ Musubi.ready(function(context) {
 				}
 			}
 		}
-		$("#list").append("</li>");
 	}
 	
     function makeUser(context)
