@@ -212,8 +212,6 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		$("#list").empty();
-		$("#list").append("<ul data-role='listview' data-theme='d' data-divider-theme='a' id='truth_list'><li data-role='list-divider'>Completed Truths</li>");
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
 		
@@ -233,6 +231,7 @@ Musubi.ready(function(context) {
 				if (screen_type == "truth")
 				{
 					$("#truth_list").append("<li><h3>" + name + "</h3></li>");
+					$("#truth_list").listview("refresh");
 				}
 			}
 		}
