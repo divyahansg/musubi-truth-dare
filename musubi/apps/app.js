@@ -218,6 +218,10 @@ Musubi.ready(function(context) {
 		$(".truth_page").css("display","none"); //show dashboard page
 	});
 	
+	$("#done_button").click(function(e) {
+		musu.appContext.quit();
+	});
+	
 	function refreshDash()
 	{
 		var truth_content = "";
@@ -226,6 +230,8 @@ Musubi.ready(function(context) {
 		$("#dare_list").empty();
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
+		var totalTruths = 0;
+		var totalDares = 0;
 		
 		var users = start_obj_DbObj.query("type='user'"); //getting all users
 		for (i=0; i<users.length; i++) //looping through all users
@@ -243,11 +249,12 @@ Musubi.ready(function(context) {
 				if (screen_type == "truth")
 				{
 					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></li>");
-					
+					totalTruths++;
 				}
 				else
 				{
 					dare_content += ("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></p></li>");
+					totalDares++;
 				}
 			}
 		}
@@ -257,6 +264,10 @@ Musubi.ready(function(context) {
 		$("#dare_list").append(dare_content);
 		$("#truth_list").listview("refresh");
 		$("#dare_list").listview("refresh");
+		if (totalTruths + totalDares == context.feed.members.length)
+		{
+			$(".done_div").css("display","inline");
+		}
 	}
 	
     function makeUser(context)
