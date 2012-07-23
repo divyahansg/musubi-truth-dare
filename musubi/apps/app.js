@@ -280,31 +280,7 @@ Musubi.ready(function(context) {
 		$(".img_viewer").css("display","none");
 		$(".dashboard").css("display","inline");
 	});
-		
-	function linkClicked() {
-		console.log("=======LINK CLICKED");
-		var name = $(this).attr('user_name');
-		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
-		var start_obj_DbObj = new SocialKit.DbObj(data); //create DbObj out of start
-		
-		var users = start_obj_DbObj.query("type='user'"); //getting all users
-		for (i=0; i<users.length; i++)
-		{
-			var temp_user_obj = new SocialKit.Obj(users[i]); //creating Obj of user
-			var temp_name = temp_user_obj.json['name']; //get name
-			if (name == temp_name) //if matched user
-			{
-				var temp_user_dbobj = new SocialKit.DbObj(users[i]); //make DbObj out of user
-				var temp_progress = temp_user_dbobj.query("type='progress'"); //querying for progress
-				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done obj
-				var img_src = done_obj.json['picture_src']; //getting img url
-				$("#img_container").append("<img src='" + img_src + "'/>"); //displaying image
-			}
-		}
-		$(".img_viewer").css("display","inline");
-		$(".dashboard").css("display","none");
-		
-	}
+
 	
 	
 	function refreshDash()
@@ -359,6 +335,31 @@ Musubi.ready(function(context) {
 		}
 	}
 	
+			
+	function linkClicked() {
+		console.log("=======LINK CLICKED");
+		var name = $(this).attr('user_name');
+		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
+		var start_obj_DbObj = new SocialKit.DbObj(data); //create DbObj out of start
+		
+		var users = start_obj_DbObj.query("type='user'"); //getting all users
+		for (i=0; i<users.length; i++)
+		{
+			var temp_user_obj = new SocialKit.Obj(users[i]); //creating Obj of user
+			var temp_name = temp_user_obj.json['name']; //get name
+			if (name == temp_name) //if matched user
+			{
+				var temp_user_dbobj = new SocialKit.DbObj(users[i]); //make DbObj out of user
+				var temp_progress = temp_user_dbobj.query("type='progress'"); //querying for progress
+				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done obj
+				var img_src = done_obj.json['picture_src']; //getting img url
+				$("#img_container").append("<img src='" + img_src + "'/>"); //displaying image
+			}
+		}
+		$(".img_viewer").css("display","inline");
+		$(".dashboard").css("display","none");
+		
+	}
 	
 	
     function makeUser(context)
