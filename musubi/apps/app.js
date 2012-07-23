@@ -218,6 +218,29 @@ Musubi.ready(function(context) {
 		$(".truth_page").css("display","none"); //show dashboard page
 	});
 	
+	$("#submit_dare").click(function(e) {
+		if($("#dare_img").length > 0)
+		{
+			var temp = $('#thumb').attr('src');
+			
+			var user = new SocialKit.DbObj(getUser(context)); //get current user
+			var answer_obj = new SocialKit.Obj(user.query("type='progress'")[1]); //get json representation of answer obj
+			var text = answer_obj.json['text']; //grab statement
+			var screen_type = answer_obj.json['screen_type']; //grab type of task (t or d)
+		
+			var done_json = {"screen_type": screen_type, "statement": text, "picture_src": temp}; //create json for done obj
+			var done_obj = new SocialKit.Obj({type: "progress", json: done_json}); //create done obj
+			user.post(done_obj); //append to user
+			
+			$(".dare_page").css("display","none");
+			$(".dashboard").css("display","inline");
+		}
+		else 
+		{
+			alert("Please upload an image");
+		}
+	});
+	
 	
 	
 	function handleFileSelect(evt) {
@@ -235,11 +258,7 @@ Musubi.ready(function(context) {
           // Render thumbnail.
 		    var string = e.target.result.substring(5);
 		    string = "data:image/jpeg;" + string;
-            $("#falcon").append("<img class=thumb height='50px' width='50px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
-            
-            var json = { "mimeType" : "image/jpeg" };
-    	    var obj = new SocialKit.Obj({"type" : "picture", "raw_data_url": string, "json": json });
-    	    musu.appContext.feed.post(obj);
+            $("#dare_img").append("<img id='thumb' class=thumb height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
           };
       })(f);
 
@@ -252,6 +271,11 @@ Musubi.ready(function(context) {
     
 	$("#done_button").click(function(e) {
 		musu.appContext.quit();
+	});
+	
+	$("#link").click(function(e) {
+		var name = $(this).attr('user_name');
+		alert(name);
 	});
 	
 	function refreshDash()
@@ -285,7 +309,7 @@ Musubi.ready(function(context) {
 				}
 				else
 				{
-					dare_content += ("<li><h3>" + name+ "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></p></li>");
+					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'<h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></p></a></li>");
 					totalDares++;
 				}
 			}

@@ -18,7 +18,7 @@
 
 	
     <style>
-		.start {display:inline;} .about {display:none;} .input {display:none;} .choice{display:none;} .truth_page{display:none;} .dare_page{display:none;} .dashboard{display:none;} .done_div{display:none;}
+		.start {display:inline;} .about {display:none;} .input {display:none;} .choice{display:none;} .truth_page{display:none;} .dare_page{display:none;} .dashboard{display:none;} .done_div{display:none;} .img_viewer{display:none;}
 	</style>
 </head> 
 <body> 
@@ -89,7 +89,7 @@
   						<input type="file" id="files" height="50px" width="150px"></input>
 					</form>	
 					<a href="#" id="submit_dare" data-role="button" data-inline="true" data-theme="b">Submit</a>
-					<div id="falcon"></div>
+					<div id="dare_img"></div>
 				</center>
 			</div>
 			<div class="dashboard">
@@ -114,7 +114,13 @@
 						<a href="#" id="done_button" data-role="button" data-inline="true" data-theme="b">Quit!</a>
 					</div>
 				</center>
-			</div>		
+			</div>	
+			<div class="img_viewer">
+				<center>
+					<div id="img_container"></div>
+					<a href="#" id="done_button" data-role="button" data-inline="true" data-theme="b">Back</a>
+				</center>
+			</div>	
 	</div><!-- /content -->
 </div><!-- /page -->
 
