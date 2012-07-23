@@ -1,6 +1,19 @@
 <html>
 <head>
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	
+</head>
+<body>
+
+					<form enctype="multipart/form-data" method="post">  
+  						<h2>Regular file upload</h2>  
+  						<input type="file" id="files" height="50px" width="150px"></input>
+					</form>	
+					<a href="#" id="submit_dare" data-role="button" data-inline="true" data-theme="b">Submit</a>
+					<div id="falcon"></div>
+
+<body>
+
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://mobisocial.stanford.edu/musubi/apps/SocialKit-JS/lib/socialKit-1.js"></script>
 <script>
 	function handleFileSelect(evt) {
@@ -32,15 +45,4 @@
 
 	document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
-</head>
-<body>
-
-					<form enctype="multipart/form-data" method="post">  
-  						<h2>Regular file upload</h2>  
-  						<input type="file" id="files" height="50px" width="150px"></input>
-					</form>	
-					<a href="#" id="submit_dare" data-role="button" data-inline="true" data-theme="b">Submit</a>
-					<div id="falcon"></div>
-
-<body>
 </html>
