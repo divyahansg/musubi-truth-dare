@@ -218,6 +218,27 @@ Musubi.ready(function(context) {
 		$(".truth_page").css("display","none"); //show dashboard page
 	});
 	
+	$("#submit_dare").click(function(evt) {
+    	var files = evt.target.files; // FileList object
+		var f = files[0];
+	
+  	    // Only process image files.
+  	    if (!f.type.match('image.*')) {
+    		alert("Upload an image dumbass!");
+	 	   return;
+   	    }
+
+   	    var reader = new FileReader();
+
+   	    // Closure to capture the file information.
+  	    reader.onload = (function(theFile) {
+     	    return function(e) {
+            // Render thumbnail.
+            $("#falcon").append("<img class=thumb src='" + e.target.result + "' title='" + escape(theFile.name) + "'/>");
+          };
+        })(f);
+    }
+	
 	function refreshDash()
 	{
 		var truth_content = "";
