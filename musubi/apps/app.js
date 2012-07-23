@@ -218,6 +218,8 @@ Musubi.ready(function(context) {
 		$(".truth_page").css("display","none"); //show dashboard page
 	});
 	
+	
+	
 	function handleFileSelect(evt) {
     var files = evt.target.files; // FileList object
 
@@ -246,6 +248,8 @@ Musubi.ready(function(context) {
       // Read in the image file as a data URL.
       reader.readAsDataURL(f);
   }
+
+	document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
     
 	$("#done_button").click(function(e) {
