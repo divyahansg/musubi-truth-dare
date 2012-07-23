@@ -27,7 +27,7 @@ Musubi.ready(function(context) {
 			var user_status = user.query("type='progress'"); //query state
 			
 			//DEPENDENT ON QUERY ORDER
-			if 		(user_status.length == 3) {showDone(user_status[2]);} //MAKE DONE OBJECT AFTER ANSWERING
+			if 		(user_status.length == 3) {showDash(user_status[2]);} //MAKE DONE OBJECT AFTER ANSWERING
 			else if (user_status.length == 2) {showAnswer(user_status[1]);} //goto answer screen
 			else if (user_status.length == 1) {showChoice(user_status[0]);} //goto choice screen
 			else    						  {								//goto input screen
@@ -311,7 +311,7 @@ Musubi.ready(function(context) {
 				else
 				{
 					console.log("=======GOT HERE");
-					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></p></a></li>");
+					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></a></li>");
 					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
 				}
@@ -375,7 +375,7 @@ Musubi.ready(function(context) {
 		$(".choice").css("display","inline");
 	}
 	
-	function showDone(json)
+	function showDash(json)
 	{
 		refreshDash();
 		
