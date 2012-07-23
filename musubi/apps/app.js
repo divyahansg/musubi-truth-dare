@@ -309,6 +309,10 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
+	
+	
+	
+		console.log("REFRESH DASH");
 		var truth_content = "";
 		var dare_content = "";
 		$("#truth_list").empty();
@@ -323,8 +327,15 @@ Musubi.ready(function(context) {
 		{
 			var temp_user_dbobj = new SocialKit.DbObj(users[i]); //creating DbObj of user
 			var temp_user_obj = new SocialKit.Obj(users[i]); //creating Obj of user
-			var name = temp_user_obj.json['name']; //getting name
+			var name = temp_user_obj.json['name']; //getting name			
 			var temp_progress = temp_user_dbobj.query("type='progress'"); //getting current state of user
+			
+			
+				if(name == "Nikhil Narayen")
+				{
+					console.log("TEMP_PROGRESS.LENGTH ========== " + temp_progress.length);
+				}
+
 			if (temp_progress.length == 3) //if done
 			{
 				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done object
