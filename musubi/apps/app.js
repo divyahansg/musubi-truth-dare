@@ -285,7 +285,7 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		element = document.getElementById("divider");
+		var element = document.getElementById("divider");
 		element.parentNode.removeChild(element);
 		var truth_content = "";
 		var dare_content = "";
