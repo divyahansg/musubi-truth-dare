@@ -227,7 +227,7 @@ Musubi.ready(function(context) {
     // Loop through the FileList and render image files as thumbnails.
 	var f = files[0];
 
-	console.log("FTYPE==================="  + f.type);
+	console.log("FILES==================="  + JSON.stringify(files));
       // Only process image files.
       if (!f.type.match('img*')) {
       	console.log("loser");
