@@ -172,7 +172,6 @@ Musubi.ready(function(context) {
 			var dare_json = (new SocialKit.Obj(arr[rand])).json; //random dare json from obj json rep (meta-JSON) 
 			$("#current_dare").append(dare_json['text'] + " asked by: " + dare_json['src_user']); //fill answer-div with rand dare and user
 			
-			
 			var current_dare = new SocialKit.DbObj(arr[rand]); //making dbobj for nesting answered under dare 
 			var taken_obj = new SocialKit.Obj({type: "taken", json: {}}); //make taken obj to nest under answer
 			current_dare.post(taken_obj); //post under dare
@@ -231,6 +230,7 @@ Musubi.ready(function(context) {
 			var done_json = {"screen_type": screen_type, "statement": text, "picture_src": temp}; //create json for done obj
 			var done_obj = new SocialKit.Obj({type: "progress", json: done_json}); //create done obj
 			user.post(done_obj); //append to user
+			console.log("===========SUCCESSFUL POSTING!");
 			
 			$(".dare_page").css("display","none");
 			$(".dashboard").css("display","inline");
@@ -300,16 +300,18 @@ Musubi.ready(function(context) {
 			{
 				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done object
 				var text = done_obj.json['statement']; //getting statement text
-				var answer = done_obj.json['answer']; //getting answer
 				var screen_type = done_obj.json['screen_type'];
 				if (screen_type == "truth")
 				{
+				    var answer = done_obj.json['answer']; //getting answer
 					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></li>");
 					totalTruths++;
 				}
 				else
 				{
+					console.log("=======GOT HERE");
 					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'<h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></p></a></li>");
+					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
 				}
 			}
