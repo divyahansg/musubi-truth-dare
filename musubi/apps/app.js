@@ -218,31 +218,36 @@ Musubi.ready(function(context) {
 		$(".truth_page").css("display","none"); //show dashboard page
 	});
 	
-	$("#submit_dare").click(function(evt) {
-	
-		console.log("=========SUBMIT CLICKED");
-    	var files = evt.target.files; // FileList object
-		var f = files[0];
-	
-  	    // Only process image files.
-  	    if (!f.type.match('image.*')) {
-    		console.log("Upload an image dumbass!");
-	 	   return;
-   	    }
+	function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
 
-   	    var reader = new FileReader();
-   	    console.log("==========CREATED FILEREADER");
+    // Loop through the FileList and render image files as thumbnails.
+	var f = files[0];
 
-   	    // Closure to capture the file information.
-  	    reader.onload = (function(theFile) {
-     	    return function(e) {
-            // Render thumbnail.
-            console.log("================ENTERED META METHOD");
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+      	console.log("loser");
+      	return;
+      }
+
+      var reader = new FileReader();
+   	  console.log("==========CREATED FILEREADER");
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+		    console.log("================ENTERED META METHOD");
             $("#falcon").append("<img class=thumb src='" + e.target.result + "' title='" + escape(theFile.name) + "'/>");
             console.log("==============FINISHED APPENDING");
           };
-        })(f);
-    });
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+  }
+
     
 	$("#done_button").click(function(e) {
 		musu.appContext.quit();
