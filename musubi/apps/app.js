@@ -237,6 +237,7 @@ Musubi.ready(function(context) {
         return function(e) {
           // Render thumbnail.
 		    console.log("================ENTERED META METHOD");
+		    console.log("===============TARGET RESULT" + e.target.result);
             $("#falcon").append("<img class=thumb src='" + e.target.result + "' title='" + escape(theFile.name) + "'/>");
             console.log("==============FINISHED APPENDING");
           };
