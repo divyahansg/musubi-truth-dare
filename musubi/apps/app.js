@@ -231,7 +231,7 @@ Musubi.ready(function(context) {
 			var done_obj = new SocialKit.Obj({type: "progress", json: done_json}); //create done obj
 			user.post(done_obj); //append to user
 			console.log("===========SUCCESSFUL POSTING!");
-			
+			console.log("=========DONE OBJ: " + JSON.stringify(done_obj));
 			$(".dare_page").css("display","none");
 			$(".dashboard").css("display","inline");
 		}
@@ -310,7 +310,7 @@ Musubi.ready(function(context) {
 				else
 				{
 					console.log("=======GOT HERE");
-					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'<h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></p></a></li>");
+					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"<img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></p></a></li>");
 					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
 				}
