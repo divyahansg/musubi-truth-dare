@@ -221,6 +221,7 @@ Musubi.ready(function(context) {
 	
 	
 	function handleFileSelect(evt) {
+	console.log("I have been run");
     var files = evt.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
