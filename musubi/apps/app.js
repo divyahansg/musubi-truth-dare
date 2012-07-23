@@ -286,9 +286,11 @@ Musubi.ready(function(context) {
 	function refreshDash()
 	{
 		var element = document.getElementById("truth_divider");
-		element.parentNode.removeChild(element);
+		if(element!= null)
+			element.parentNode.removeChild(element);
 		element = document.getElementById("dare_divider");
-		element.parentNode.removeChild(element);
+		if(element!= null)
+			element.parentNode.removeChild(element);
 		var truth_content = "";
 		var dare_content = "";
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
