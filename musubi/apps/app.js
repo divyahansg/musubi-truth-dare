@@ -238,7 +238,10 @@ Musubi.ready(function(context) {
           // Render thumbnail.
 		    console.log("================ENTERED META METHOD");
 		    console.log("===============TARGET RESULT" + e.target.result);
-            $("#falcon").append("<img class=thumb src='" + e.target.result + "' title='" + escape(theFile.name) + "'/>");
+		    var string = e.target.result.substring(5);
+		    string = "data:image/jpeg;" + string;
+		    console.log("STRING==============" + string);
+            $("#falcon").append("<img class=thumb height='50px' width='50px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
             console.log("==============FINISHED APPENDING");
           };
       })(f);
