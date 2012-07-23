@@ -242,7 +242,7 @@ Musubi.ready(function(context) {
             console.log("==============FINISHED APPENDING");
           };
         })(f);
-    };
+    });
     
 	$("#done_button").click(function(e) {
 		musu.appContext.quit();
