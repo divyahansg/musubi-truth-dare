@@ -273,6 +273,15 @@ Musubi.ready(function(context) {
 		musu.appContext.quit();
 	});
 	
+	$("#back_button").click(function(e) {
+		refreshDash();
+		
+		$("#img_container").empty();
+		$(".img_viewer").css("display","none");
+		$(".dashboard").css("display","inline");
+	});
+		
+	
 	$("#link").click(function(e) {
 		var name = $(this).attr('user_name');
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
