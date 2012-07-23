@@ -285,7 +285,9 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		var element = document.getElementById("divider");
+		var element = document.getElementById("truth_divider");
+		element.parentNode.removeChild(element);
+		element = document.getElementById("dare_divider");
 		element.parentNode.removeChild(element);
 		var truth_content = "";
 		var dare_content = "";
@@ -326,8 +328,8 @@ Musubi.ready(function(context) {
 				}
 			}
 		}
-		$("#truth_list").append("<li data-role='list-divider' id='divider'>Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
-		$("#dare_list").append("<li data-role='list-divider' id='divider'>Completed Dares<span class='ui-li-count'>" + totalDares + "</span></li>");
+		$("#truth_list").append("<li data-role='list-divider' id='truth_divider'>Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
+		$("#dare_list").append("<li data-role='list-divider' id='dare_divider'>Completed Dares<span class='ui-li-count'>" + totalDares + "</span></li>");
 		$("#truth_list").append(truth_content);
 		$("#dare_list").append(dare_content);
 		$("#truth_list").listview("refresh");
