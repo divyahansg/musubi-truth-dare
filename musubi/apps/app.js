@@ -313,8 +313,6 @@ Musubi.ready(function(context) {
 				    var answer = done_obj.json['answer']; //getting answer
 					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></li>");
 					totalTruths++;
-					var posted_to_dash = new SocialKit.Obj({type: "progress"}); //creates additional object to prevent duplicates
-					temp_user_dbobj.post(posted_to_dash);
 				}
 				else
 				{
@@ -322,8 +320,6 @@ Musubi.ready(function(context) {
 					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></a></li>");
 					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
-					var posted_to_dash = new SocialKit.Obj({type: "progress"});
-					temp_user_dbobj.post(posted_to_dash);
 				}
 			}
 		}
