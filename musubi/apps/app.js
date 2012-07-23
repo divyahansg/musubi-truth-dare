@@ -285,7 +285,8 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		console.log("REFRESH DASH");
+		element = document.getElementById("divider");
+		element.parentNode.removeChild(element);
 		var truth_content = "";
 		var dare_content = "";
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
@@ -325,8 +326,8 @@ Musubi.ready(function(context) {
 				}
 			}
 		}
-		$("#truth_list").append("<li data-role='list-divider'>Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
-		$("#dare_list").append("<li data-role='list-divider'>Completed Dares<span class='ui-li-count'>" + totalDares + "</span></li>");
+		$("#truth_list").append("<li data-role='list-divider' id='divider'>Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
+		$("#dare_list").append("<li data-role='list-divider' id='divider'>Completed Dares<span class='ui-li-count'>" + totalDares + "</span></li>");
 		$("#truth_list").append(truth_content);
 		$("#dare_list").append(dare_content);
 		$("#truth_list").listview("refresh");
