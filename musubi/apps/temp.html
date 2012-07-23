@@ -3,19 +3,6 @@
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://mobisocial.stanford.edu/musubi/apps/SocialKit-JS/lib/socialKit-1.js"></script>
 <script>
-function MusuWriter(app) {
-  this.appContext = app;
-}
-
-
-
-var musu;
-Musubi.ready(function(context) {
-    musu = new MusuWriter(context);
-    
-   
-	
-	
 	function handleFileSelect(evt) {
 	console.log("I have been run");
     var files = evt.target.files; // FileList object
@@ -44,7 +31,6 @@ Musubi.ready(function(context) {
   }
 
 	document.getElementById('files').addEventListener('change', handleFileSelect, false);
-});
 </script>
 </head>
 <body>
