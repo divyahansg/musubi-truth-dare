@@ -293,7 +293,7 @@ Musubi.ready(function(context) {
 			}
 		}
 		$(".img_viewer").css("display","inline");
-		$(".dashbaord".css("display","none");
+		$(".dashbaord").css("display","none");
 		
 	});
 	
