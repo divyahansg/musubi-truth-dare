@@ -221,28 +221,25 @@ Musubi.ready(function(context) {
 	
 	
 	function handleFileSelect(evt) {
-	console.log("I have been run");
     var files = evt.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
 	var f = files[0];
 
-	console.log("FILES==================="  + JSON.stringify(files[0]));
 		
       var reader = new FileReader();
-   	  console.log("==========CREATED FILEREADER");
 
       // Closure to capture the file information.
       reader.onload = (function(theFile) {
         return function(e) {
           // Render thumbnail.
-		    console.log("================ENTERED META METHOD");
-		    console.log("===============TARGET RESULT" + e.target.result);
 		    var string = e.target.result.substring(5);
 		    string = "data:image/jpeg;" + string;
-		    console.log("STRING==============" + string);
             $("#falcon").append("<img class=thumb height='50px' width='50px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
-            console.log("==============FINISHED APPENDING");
+            
+            var json = { "mimeType" : "image/jpeg" };
+    	    var obj = new SocialKit.Obj({"type" : "picture", "raw_data_url": string, "json": json });
+    	    musu.appContext.feed.post(obj);
           };
       })(f);
 
