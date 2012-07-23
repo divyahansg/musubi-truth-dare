@@ -241,7 +241,6 @@ Musubi.ready(function(context) {
             $("#falcon").append("<img class=thumb src='" + e.target.result + "' title='" + escape(theFile.name) + "'/>");
             console.log("==============FINISHED APPENDING");
           };
-        };
       })(f);
 
       // Read in the image file as a data URL.
