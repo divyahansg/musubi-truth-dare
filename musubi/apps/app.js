@@ -301,6 +301,7 @@ Musubi.ready(function(context) {
 				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done object
 				var text = done_obj.json['statement']; //getting statement text
 				var screen_type = done_obj.json['screen_type'];
+				console.log(JSON.stringify(done_obj));
 				if (screen_type == "truth")
 				{
 				    var answer = done_obj.json['answer']; //getting answer
