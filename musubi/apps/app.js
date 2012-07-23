@@ -219,7 +219,7 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#submit_dare").click(function(evt) {
-	/*
+	
 		console.log("=========SUBMIT CLICKED");
     	var files = evt.target.files; // FileList object
 		var f = files[0];
@@ -241,8 +241,8 @@ Musubi.ready(function(context) {
             $("#falcon").append("<img class=thumb src='" + e.target.result + "' title='" + escape(theFile.name) + "'/>");
             console.log("==============FINISHED APPENDING");
           };
-        })(f);*/
-    }
+        })(f);
+    };
     
 	$("#done_button").click(function(e) {
 		musu.appContext.quit();
