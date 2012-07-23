@@ -18,7 +18,7 @@
 
 	
     <style>
-		.start {display:inline;} .about {display:none;} .input {display:none;} .choice{display:none;} .truth_page{display:none;} .dare_page{display:none;} .dashboard{display:none;}
+		.start {display:inline;} .about {display:none;} .input {display:none;} .choice{display:none;} .truth_page{display:none;} .dare_page{display:none;} .dashboard{display:none;} .done_div{display:none;}
 	</style>
 </head> 
 <body> 
@@ -40,7 +40,6 @@
 				<center>
 					<h1>About</h1>
 						Welcome to Musubi Truth or Dare! Each user in the feed will submit their own Truth and Dare; once everybody has finished, the game will randomly assign tasks to the players. To complete a truth, simply answer the question; to complete a dare, upload a picture of you completing the dare. It's that simple, enjoy!
-					
 					<br/><br />
 					<a href="#" id="return" data-role="button" data-inline="true" data-theme="b">Return</a>
 					<br/><br/>
@@ -109,7 +108,12 @@
 				</ul>
 				<br/><br/>
 				
-				<center><a href="#" id="refresh" data-role="button" data-inline="true" data-theme="b">Refresh</a></center>
+				<center>
+					<a href="#" id="refresh" data-role="button" data-inline="true" data-theme="b">Refresh</a>&nbsp;&nbsp;
+					<div class="done_div">
+						<a href="#" id="done_button" data-role="button" data-inline="true" data-theme="b">Quit!</a>
+					</div>
+				</center>
 			</div>		
 	</div><!-- /content -->
 </div><!-- /page -->
