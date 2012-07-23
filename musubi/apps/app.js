@@ -27,7 +27,7 @@ Musubi.ready(function(context) {
 			var user_status = user.query("type='progress'"); //query state
 			
 			//DEPENDENT ON QUERY ORDER
-			if 		(user_status.length == 3) {showDash(user_status[2]);} //MAKE DONE OBJECT AFTER ANSWERING
+			if 		(user_status.length >= 3) {showDash(user_status[2]);} //MAKE DONE OBJECT AFTER ANSWERING
 			else if (user_status.length == 2) {showAnswer(user_status[1]);} //goto answer screen
 			else if (user_status.length == 1) {showChoice(user_status[0]);} //goto choice screen
 			else    						  {								//goto input screen
@@ -288,8 +288,6 @@ Musubi.ready(function(context) {
 		console.log("REFRESH DASH");
 		var truth_content = "";
 		var dare_content = "";
-		$("#truth_list").empty();
-		$("#dare_list").empty();
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
 		var totalTruths = 0;
@@ -302,13 +300,6 @@ Musubi.ready(function(context) {
 			var temp_user_obj = new SocialKit.Obj(users[i]); //creating Obj of user
 			var name = temp_user_obj.json['name']; //getting name			
 			var temp_progress = temp_user_dbobj.query("type='progress'"); //getting current state of user
-			
-			
-				if(name == "Nikhil Narayen")
-				{
-					console.log("TEMP_PROGRESS.LENGTH ========== " + temp_progress.length);
-				}
-
 			if (temp_progress.length == 3) //if done
 			{
 				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done object
@@ -320,6 +311,8 @@ Musubi.ready(function(context) {
 				    var answer = done_obj.json['answer']; //getting answer
 					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></li>");
 					totalTruths++;
+					var posted_to_dash = new SocialKit.Obj({type: "progress"}); //creates additional object to prevent duplicates
+					temp_user_dbobj.post(posted_to_dash);
 				}
 				else
 				{
@@ -327,11 +320,13 @@ Musubi.ready(function(context) {
 					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></a></li>");
 					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
+					var posted_to_dash = new SocialKit.Obj({type: "progress"}); //creates additional object to prevent duplicates
+					temp_user_dbobj.post(posted_to_dash);
 				}
 			}
 		}
-		$("#truth_list").append("<li data-role='list-divider'>Completed Truths</li>");
-		$("#dare_list").append("<li data-role='list-divider'>Completed Dares</li>");
+		$("#truth_list").append("<li data-role='list-divider'>Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
+		$("#dare_list").append("<li data-role='list-divider'>Completed Dares<span class='ui-li-count'>" + totalDares + "</span></li>");
 		$("#truth_list").append(truth_content);
 		$("#dare_list").append(dare_content);
 		$("#truth_list").listview("refresh");
