@@ -341,7 +341,7 @@ Musubi.ready(function(context) {
 				else
 				{
 					console.log("=======GOT HERE");
-					dare_content += ("<li><a href='#' onclick='linkClicked()'   id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></a></li>");
+					dare_content += ("<li><a href='#' onclick='javascript:linkClicked()'   id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></a></li>");
 					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
 				}
