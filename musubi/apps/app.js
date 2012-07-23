@@ -285,14 +285,11 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		var element = document.getElementById("truth_divider");
-		if(element!= null)
-			element.parentNode.removeChild(element);
-		element = document.getElementById("dare_divider");
-		if(element!= null)
-			element.parentNode.removeChild(element);
+		console.log("REFRESH DASH");
 		var truth_content = "";
 		var dare_content = "";
+		$("#truth_list").empty();
+		$("#dare_list").empty();
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
 		var totalTruths = 0;
@@ -325,13 +322,13 @@ Musubi.ready(function(context) {
 					dare_content += ("<li><a href='#' id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></a></li>");
 					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
-					var posted_to_dash = new SocialKit.Obj({type: "progress"}); //creates additional object to prevent duplicates
+					var posted_to_dash = new SocialKit.Obj({type: "progress"});
 					temp_user_dbobj.post(posted_to_dash);
 				}
 			}
 		}
-		$("#truth_list").append("<li data-role='list-divider' id='truth_divider'>Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
-		$("#dare_list").append("<li data-role='list-divider' id='dare_divider'>Completed Dares<span class='ui-li-count'>" + totalDares + "</span></li>");
+		$("#truth_list").append("<li data-role='list-divider'>Completed Truths</li>");
+		$("#dare_list").append("<li data-role='list-divider'>Completed Dares</li>");
 		$("#truth_list").append(truth_content);
 		$("#dare_list").append(dare_content);
 		$("#truth_list").listview("refresh");
