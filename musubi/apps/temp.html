@@ -27,6 +27,7 @@
 		files[0].type = "image/jpeg";
       var reader = new FileReader();
    	  console.log("==========CREATED FILEREADER");
+	console.log("NEW FILE WITH JPEG==================="  + JSON.stringify(files[0]));
 
       // Closure to capture the file information.
       reader.onload = (function(theFile) {
