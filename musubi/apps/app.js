@@ -218,7 +218,7 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#submit_dare").click(function(e) {
-		if($("#dare_img").length > 0)
+		if($("#dare_img").html() == "")
 		{
 			var temp = $('#thumb').attr('src');
 			
@@ -317,14 +317,14 @@ Musubi.ready(function(context) {
 				else
 				{
 					console.log("=======GOT HERE");
-					dare_content += ("<li><a href='#' onclick='javascript:linkClicked()'   id='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></a></li>");
+					dare_content += ("<li><a href='#' class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p></a></li>");
 					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
 				}
 			}
 		}
-		$("#truth_list").append("<li data-role='list-divider'>Completed Truths</li>");
-		$("#dare_list").append("<li data-role='list-divider'>Completed Dares</li>");
+		$("#truth_list").append("<li data-role='list-divider'>Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
+		$("#dare_list").append("<li data-role='list-divider'>Completed Dares<span class='ui-li-count'>" + totalDares + "</span></li>");
 		$("#truth_list").append(truth_content);
 		$("#dare_list").append(dare_content);
 		$("#truth_list").listview("refresh");
@@ -336,7 +336,7 @@ Musubi.ready(function(context) {
 	}
 	
 			
-	function linkClickedJS() {
+	$(".link").click(function(e) {
 		console.log("=======LINK CLICKED");
 		var name = $(this).attr('user_name');
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
@@ -358,8 +358,7 @@ Musubi.ready(function(context) {
 		}
 		$(".img_viewer").css("display","inline");
 		$(".dashboard").css("display","none");
-		
-	}
+	});
 	
 	
     function makeUser(context)
