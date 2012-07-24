@@ -239,28 +239,28 @@ Musubi.ready(function(context) {
 	
 	
 	function handleFileSelect(evt) {
-	$("#dare_img").empty();
-    var files = evt.target.files; // FileList object
+		$("#dare_img").empty();
+   	    var files = evt.target.files; // FileList object
 
-    // Loop through the FileList and render image files as thumbnails.
-	var f = files[0];
+   	    // Loop through the FileList and render image files as thumbnails.
+		var f = files[0];
 
 		
-      var reader = new FileReader();
+        var reader = new FileReader();
 
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-		    var string = e.target.result.substring(5);
-		    string = "data:image/jpeg;" + string;
-            $("#dare_img").append("<img id='thumb' class=thumb height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
-          };
-      })(f);
+        // Closure to capture the file information.
+        reader.onload = (function(theFile) {
+            return function(e) {
+            // Render thumbnail.
+		        var string = e.target.result.substring(5);
+		        string = "data:image/jpeg;" + string;
+                $("#dare_img").append("<img id='thumb' class=thumb height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
+              };
+          })(f);
 
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
-  }
+          // Read in the image file as a data URL.
+          reader.readAsDataURL(f);
+    }  
 
 	document.getElementById('files').addEventListener('change', handleFileSelect, false);
 
