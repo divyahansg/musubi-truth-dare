@@ -335,7 +335,7 @@ Musubi.ready(function(context) {
 	}
 	
 			
-	$(".link").click(function(e) {
+	$('.link').live('click',function() {
 		console.log("=======LINK CLICKED");
 		var name = $(this).attr('user_name');
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
