@@ -43,7 +43,7 @@ Musubi.ready(function(context) {
       var style = "font-size:30px;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
       style += "color:red;";
-      var text = "Game started!";
+      var text = context.user["name"] + " started a game of Truth or Dare! Run the app to join!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
