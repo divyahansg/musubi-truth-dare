@@ -252,7 +252,7 @@ Musubi.ready(function(context) {
 	
 	
 	function handleFileSelect(evt) {
-		$("#dare_img").attr('img_src') = "";
+		$("#dare_img").attr('img_src', "");
 		var files = evt.target.files; // FileList object
 		
 		// Loop through the FileList and render image files as thumbnails.
@@ -276,7 +276,7 @@ Musubi.ready(function(context) {
 				 var ctx = canvas.getContext("2d");
 				 ctx.drawImage(img,0,0,150,150);
 				 
-				 $('#dare_img').attr('img_src') = string;
+				 $('#dare_img').attr('img_src', string);
 			 	 
 			 	 //$("#dare_img").append("<img id='thumb' height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
 			 	 };
