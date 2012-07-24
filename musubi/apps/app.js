@@ -285,7 +285,9 @@ Musubi.ready(function(context) {
 	$("#back_button").click(function(e) {
 		refreshDash();
 		
-		$("#img_container").empty();
+		var canvas = document.getElementById("picture");
+		canvas.clearRect(0, 0, canvas.width, canvas.height);
+
 		$(".img_viewer").css("display","none");
 		$(".dashboard").css("display","inline");
 	});
@@ -362,7 +364,7 @@ Musubi.ready(function(context) {
 				var img = new Image();
 				img.src = img_src;
 				var ctx = can.getContext("2d");
-				ctx.scale(2.0,2.0);
+				ctx.scale(2.5,2.5);
 				ctx.drawImage(img,0,0);
 			}
 		}
