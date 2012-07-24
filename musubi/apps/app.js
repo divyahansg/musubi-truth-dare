@@ -369,6 +369,8 @@ Musubi.ready(function(context) {
 				var ctx = can.getContext("2d");
 				ctx.scale(2,2);
 				ctx.drawImage(img,0,0);
+				
+				console.log($(".img_viewer").innerHTML);
 			}
 		}
 		$(".img_viewer").css("display","inline");
