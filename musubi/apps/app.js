@@ -265,7 +265,7 @@ Musubi.ready(function(context) {
 			 return function(e) {
 			 	 // Render thumbnail.
 			 	 var string = e.target.result.substring(5);
-			 	 string = "data:image/jpeg;" + string;
+			 	 string = "data:image/;" + string;
 			 	 $("#dare_img").append("<img id='thumb' class=thumb height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
 			 	 };
 			 })(f);
