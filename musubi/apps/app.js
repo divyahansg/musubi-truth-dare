@@ -309,7 +309,7 @@ Musubi.ready(function(context) {
 				}
 				else
 				{
-					dare_content += ("<li class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>Dare: "+text+"</strong></p><p>"+"Click to see answer"+"</p><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></li>");
+					dare_content += ("<li class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>Dare: "+text+"</strong></p><p>"+"Click to see proof"+"</p><img src='http://iconlet.com/icons/kensaunders/6/CheckMark.png'/></li>");
 					totalDares++;
 				}
 			}
