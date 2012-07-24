@@ -368,9 +368,8 @@ Musubi.ready(function(context) {
 				var ctx = can.getContext("2d");
 				can.width = 300;
 				can.height = 300;
-				img.onload = function() {
-					ctx.drawImage(img,0,0,300,300);
-				};
+				ctx.scale(3,3);
+				ctx.drawImage(img,0,0,300,300);
 				console.log($(".img_viewer").html());
 			}
 		}
