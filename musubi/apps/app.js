@@ -219,7 +219,7 @@ Musubi.ready(function(context) {
 			var temp = $('#thumb').attr('src');
 			console.log("INITIAL LENGTH=================" + temp.length);
 			
-			var img = document.createElement("img");
+			var img = new Image();
 			img.src = temp;
 			
 			var canvas = document.createElement("canvas");
