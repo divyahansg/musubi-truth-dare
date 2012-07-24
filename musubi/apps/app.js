@@ -288,8 +288,7 @@ Musubi.ready(function(context) {
 		console.log("REFRESH DASH");
 		var truth_content = "";
 		var dare_content = "";
-		$("#truth_list").empty();
-		$("#dare_list").empty();
+		$("li").remove();
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //creating start object
 		var totalTruths = 0;
