@@ -223,11 +223,10 @@ Musubi.ready(function(context) {
 			img.src = temp;
 			
 			var canvas = document.createElement("canvas");
-			canvas.width = img.width;
-			canvas.height = img.height;
+			canvas.width = 10;
+			canvas.height = 10;
 			var ctx = canvas.getContext("2d");
-			ctx.scale(.05,.05);
-			ctx.drawImage(img,0,0);
+			ctx.drawImage(img,0,0,10,10);
 			
 			temp = canvas.toDataURL("image/jpeg");
 			console.log("FINAL LENGTH=================" + temp.length);
@@ -364,13 +363,13 @@ Musubi.ready(function(context) {
 				var can = document.getElementById("picture");
 				var img = new Image();
 				img.src = img_src;
-				console.log("IMG SRC IS =====================" + img.src);
+				console.log("IMG SRC IS =====================" + img.src.length);
 				var ctx = can.getContext("2d");
 				can.width = 300;
 				can.height = 300;
-				ctx.scale(14,14);
 				ctx.drawImage(img,0,0,300,300);
 				console.log($(".img_viewer").html());
+				console.log("=====IMG HEIGHT" + img.height);
 			}
 		}
 		$(".img_viewer").css("display","inline");
