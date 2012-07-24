@@ -304,12 +304,12 @@ Musubi.ready(function(context) {
 				if (screen_type == "truth")
 				{
 				    var answer = done_obj.json['answer']; //getting answer
-					truth_content += ("<li><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></li>");
+					truth_content += ("<li><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/><h3>" + name+ "</h3><p><strong>Truth: "+text+"</strong></p><p>"+answer+"</p></li>");
 					totalTruths++;
 				}
 				else
 				{
-					dare_content += ("<li class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>Dare: "+text+"</strong></p><p>"+"Click to see proof"+"</p><img src='http://www.wpclipart.com/signs_symbol/checkmarks/checkmark_in_circle/ok_checkmark_red.png'/></li>");
+					dare_content += ("<li class='link' user_name='"+name+"'><img src='http://www.wpclipart.com/signs_symbol/checkmarks/checkmark_in_circle/ok_checkmark_red.png'/><h3>" + name + "</h3><p><strong>Dare: "+text+"</strong></p><p>"+"Click to see proof"+"</p></li>");
 					totalDares++;
 				}
 			}
