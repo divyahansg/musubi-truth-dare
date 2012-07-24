@@ -217,6 +217,7 @@ Musubi.ready(function(context) {
 		if($("#dare_img").html() != "")
 		{
 			var temp = $('#thumb').attr('src');
+			console.log("INITIAL LENGTH=================" + temp.length);
 			
 			var img = document.createElement("img");
 			img.src = temp;
@@ -228,6 +229,7 @@ Musubi.ready(function(context) {
 			ctx.scale(.2,.2);
 			
 			temp = canvas.toDataUrl("image/jpeg");
+			console.log("FINAL LENGTH=================" + temp.length);
 			
 			var user = new SocialKit.DbObj(getUser(context)); //get current user
 			var answer_obj = new SocialKit.Obj(user.query("type='progress'")[1]); //get json representation of answer obj
