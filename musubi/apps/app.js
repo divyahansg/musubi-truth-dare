@@ -217,7 +217,17 @@ Musubi.ready(function(context) {
 		if($("#dare_img").html() != "")
 		{
 			var temp = $('#thumb').attr('src');
-			console.log("LENGTH===================" + temp.length);
+			
+			var img = document.createElement("img");
+			img.src = temp;
+			
+			var canvas = document.createElement("canvas");
+			canvas.width = img.width;
+			canvas.height = img.height;
+			var ctx = canvas.getcontext("2d");
+			ctx.scale(.2,.2);
+			
+			temp = canvas.toDataUrl("image/jpeg");
 			
 			var user = new SocialKit.DbObj(getUser(context)); //get current user
 			var answer_obj = new SocialKit.Obj(user.query("type='progress'")[1]); //get json representation of answer obj
@@ -253,7 +263,7 @@ Musubi.ready(function(context) {
 			 return function(e) {
 			 	 // Render thumbnail.
 			 	 var string = e.target.result.substring(5);
-			 	 string = "data:image/jpeg;" + string;
+			 	 string = "data:image/gif;" + string;
 			 	 $("#dare_img").append("<img id='thumb' class=thumb height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
 			 	 };
 			 })(f);
