@@ -226,7 +226,7 @@ Musubi.ready(function(context) {
 			canvas.width = img.width;
 			canvas.height = img.height;
 			var ctx = canvas.getContext("2d");
-			ctx.scale(.2,.2);
+			ctx.scale(.07,.07);
 			ctx.drawImage(img,0,0);
 			
 			temp = canvas.toDataURL("image/jpeg");
@@ -357,7 +357,13 @@ Musubi.ready(function(context) {
 				var temp_progress = temp_user_dbobj.query("type='progress'"); //querying for progress
 				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done obj
 				var img_src = done_obj.json['picture_src']; //getting img url
-				$("#img_container").append("<img src='" + img_src + "'/>"); //displaying image
+				
+				var can = $("#picture");
+				var img = new Image();
+				img.src = img_src;
+				var ctx = can.getContext("2d");
+				ctx.scale(2.0,2.0);
+				ctx.drawImage(img);
 			}
 		}
 		$(".img_viewer").css("display","inline");
