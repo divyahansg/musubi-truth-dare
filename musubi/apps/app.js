@@ -228,7 +228,7 @@ Musubi.ready(function(context) {
 			var ctx = canvas.getContext("2d");
 			ctx.scale(.2,.2);
 			
-			temp = canvas.toDataUrl("image/jpeg");
+			temp = canvas.toDataURL("image/jpeg");
 			console.log("FINAL LENGTH=================" + temp.length);
 			
 			var user = new SocialKit.DbObj(getUser(context)); //get current user
