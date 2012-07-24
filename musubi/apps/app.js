@@ -265,7 +265,7 @@ Musubi.ready(function(context) {
 			 return function(e) {
 			 	 // Render thumbnail.
 			 	 var string = e.target.result.substring(5);
-			 	 string = "data:image/gif;" + string;
+			 	 string = "data:image/jpeg;" + string;
 			 	 $("#dare_img").append("<img id='thumb' class=thumb height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
 			 	 };
 			 })(f);
@@ -365,7 +365,7 @@ Musubi.ready(function(context) {
 				img.src = img_src;
 				console.log("IMG SRC IS =====================" + img.src.length);
 				var ctx = can.getContext("2d");
-				can.width = 300;
+				can.width = 250;
 				can.height = 300;
 				ctx.drawImage(img,0,0,300,300);
 				console.log($(".img_viewer").html());
