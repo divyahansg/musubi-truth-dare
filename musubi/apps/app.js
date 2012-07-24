@@ -309,7 +309,7 @@ Musubi.ready(function(context) {
 				}
 				else
 				{
-					dare_content += ("<li class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>Dare: "+text+"</strong></p><p>"+"Click to see proof"+"</p><img height='90px' width='75px' src='http://www.wpclipart.com/signs_symbol/checkmarks/checkmark_in_circle/ok_checkmark_red.png'/></li>");
+					dare_content += ("<li class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>Dare: "+text+"</strong></p><p>"+"Click to see proof"+"</p><img height='80px' width='75px' src='http://www.wpclipart.com/signs_symbol/checkmarks/checkmark_in_circle/ok_checkmark_red.png'/></li>");
 					totalDares++;
 				}
 			}
