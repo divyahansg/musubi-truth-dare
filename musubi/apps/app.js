@@ -366,8 +366,8 @@ Musubi.ready(function(context) {
 				img.src = img_src;
 				console.log("IMG SRC IS =====================" + img.src);
 				var ctx = can.getContext("2d");
-				can.width = img.width/10;
-				can.height = img.height/10;
+				can.width = 500;
+				can.height = 500;
 				ctx.scale(2.5,2.5);
 				ctx.drawImage(img,0,0);
 				
