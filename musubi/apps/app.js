@@ -223,10 +223,10 @@ Musubi.ready(function(context) {
 			img.src = temp;
 			
 			var canvas = document.createElement("canvas");
-			canvas.width = 10;
-			canvas.height = 10;
+			canvas.width = 100;
+			canvas.height = 100;
 			var ctx = canvas.getContext("2d");
-			ctx.drawImage(img,0,0,10,10);
+			ctx.drawImage(img,0,0,100,100);
 			
 			temp = canvas.toDataURL("image/jpeg");
 			console.log("FINAL LENGTH=================" + temp.length);
