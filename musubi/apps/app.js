@@ -364,8 +364,10 @@ Musubi.ready(function(context) {
 				var can = document.getElementById("picture");
 				var img = new Image();
 				img.src = img_src;
+				can.width = img.width;
+				can.height = img.height;
 				var ctx = can.getContext("2d");
-				ctx.scale(2.5,2.5);
+				ctx.scale(3,3);
 				ctx.drawImage(img,0,0);
 			}
 		}
