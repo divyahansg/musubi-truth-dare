@@ -214,7 +214,7 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#submit_dare").click(function(e) {
-		if($("#dare_img").html() == "")
+		if($("#dare_img").html() != "")
 		{
 			var temp = $('#thumb').attr('src');
 			
