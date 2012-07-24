@@ -314,7 +314,7 @@ Musubi.ready(function(context) {
 				}
 			}
 		}
-		$("#truth_list").append("<li data-role='list-divider'>Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
+		$("#truth_list").append("<li data-role='list-divider' >Completed Truths<span class='ui-li-count'>" + totalTruths + "</span></li>");
 		$("#dare_list").append("<li data-role='list-divider'>Completed Dares<span class='ui-li-count'>" + totalDares + "</span></li>");
 		$("#truth_list").append(truth_content);
 		$("#dare_list").append(dare_content);
