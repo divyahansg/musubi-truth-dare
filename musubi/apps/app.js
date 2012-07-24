@@ -252,7 +252,7 @@ Musubi.ready(function(context) {
 	
 	
 	function handleFileSelect(evt) {
-		$("#dare_img").atrr('img_src') = "";
+		$("#dare_img").attr('img_src') = "";
 		var files = evt.target.files; // FileList object
 		
 		// Loop through the FileList and render image files as thumbnails.
