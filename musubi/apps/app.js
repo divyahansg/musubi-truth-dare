@@ -40,7 +40,7 @@ Musubi.ready(function(context) {
     $("#start").click(function(e) {
     
       //post game start notification
-      var style = "font-size:30px;padding:5px;";
+      var style = "font-size:xx-large;padding:5px;";
       style += "background-color:blue;white-space:nowrap;";
       style += "color:red;";
       var text = context.user["name"] + " started a game of Truth or Dare! Run the app to join!";
