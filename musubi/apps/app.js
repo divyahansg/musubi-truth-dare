@@ -286,7 +286,8 @@ Musubi.ready(function(context) {
 		refreshDash();
 		
 		var canvas = document.getElementById("picture");
-		canvas.clearRect(0, 0, canvas.width, canvas.height);
+		var context = canvas.getContext('2d');
+		context.clearRect(0, 0, canvas.width, canvas.height);
 
 		$(".img_viewer").css("display","none");
 		$(".dashboard").css("display","inline");
