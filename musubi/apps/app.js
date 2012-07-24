@@ -217,6 +217,7 @@ Musubi.ready(function(context) {
 		if($("#dare_img").html() != "")
 		{
 			var temp = $('#thumb').attr('src');
+			console.log(temp.length);
 			
 			var user = new SocialKit.DbObj(getUser(context)); //get current user
 			var answer_obj = new SocialKit.Obj(user.query("type='progress'")[1]); //get json representation of answer obj
