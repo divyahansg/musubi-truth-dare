@@ -40,10 +40,10 @@ Musubi.ready(function(context) {
     $("#start").click(function(e) {
     
       //post game start notification
-      var style = "font-size:xx-large;padding:5px;";
+      var style = "";//"font-size:xx-large;padding:5px;";
       //style += "background-color:blue;white-space:nowrap;";
       style += "color:red;";
-      var text = "<img src='http://divyahansg.github.com/musubi-truth-dare/musubi/apps/header_1.png'>" + "Run the app to join!";
+      var text = "<img src='http://divyahansg.github.com/musubi-truth-dare/musubi/apps/header_1.png'>Run the app to join!";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
