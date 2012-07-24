@@ -226,7 +226,7 @@ Musubi.ready(function(context) {
 			canvas.width = img.width;
 			canvas.height = img.height;
 			var ctx = canvas.getContext("2d");
-			ctx.scale(.5,.5);
+			ctx.scale(.2,.2);
 			ctx.drawImage(img,0,0);
 			
 			temp = canvas.toDataURL("image/jpeg");
