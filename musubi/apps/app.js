@@ -214,9 +214,9 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#submit_dare").click(function(e) {
-		if($("#dare_img").html() != "")
+		if($("#dare_img").attr('img_src') != "")
 		{
-			var temp = $('#thumb').attr('src');
+			var temp = $('#dare_img').attr('img_src');
 			console.log("INITIAL LENGTH=================" + temp.length);
 			
 			var img = new Image();
@@ -252,7 +252,7 @@ Musubi.ready(function(context) {
 	
 	
 	function handleFileSelect(evt) {
-		$("#dare_img").empty();
+		$("#dare_img").atrr('img_src') = "";
 		var files = evt.target.files; // FileList object
 		
 		// Loop through the FileList and render image files as thumbnails.
@@ -266,7 +266,19 @@ Musubi.ready(function(context) {
 			 	 // Render thumbnail.
 			 	 var string = e.target.result.substring(5);
 			 	 string = "data:image/jpeg;" + string;
-			 	 $("#dare_img").append("<img id='thumb' class=thumb height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
+			 	 
+			 	 var img = new Image();
+				 img.src = string;
+				
+				 var canvas = document.getElementById("dare_img");
+				 canvas.width = 150;
+				 canvas.height = 150;
+				 var ctx = canvas.getContext("2d");
+				 ctx.drawImage(img,0,0,150,150);
+				 
+				 $('#dare_img').attr('img_src') = string;
+			 	 
+			 	 //$("#dare_img").append("<img id='thumb' height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
 			 	 };
 			 })(f);
 			 
