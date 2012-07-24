@@ -365,8 +365,8 @@ Musubi.ready(function(context) {
 				var img = new Image();
 				img.src = img_src;
 				var ctx = can.getContext("2d");
-				ctx.scale(2.5,2.5);
-				can.width = 250;
+				ctx.scale(3,3);
+				can.width = 175;
 				can.height = 200;
 				ctx.drawImage(img,0,0);
 				
