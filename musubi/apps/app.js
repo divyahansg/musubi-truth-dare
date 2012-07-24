@@ -363,7 +363,7 @@ Musubi.ready(function(context) {
 				img.src = img_src;
 				var ctx = can.getContext("2d");
 				ctx.scale(2.0,2.0);
-				ctx.drawImage(img);
+				ctx.drawImage(img,0,0);
 			}
 		}
 		$(".img_viewer").css("display","inline");
