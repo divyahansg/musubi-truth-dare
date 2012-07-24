@@ -51,7 +51,6 @@ Musubi.ready(function(context) {
       
 	  
 	  var user_obj = makeUser(context);    //person starting game
-	  console.log("=============USER IS: " + user_obj);
 	       
       setTimeout(func, 1000);
 		function func() {
@@ -98,7 +97,6 @@ Musubi.ready(function(context) {
       var user = new SocialKit.DbObj(getUser(context)); //get user obj to nest choice progress
       var choice_obj = new SocialKit.Obj({type: "progress"}); //make progress obj (choice)
       user.post(choice_obj); //posted
-      console.log("============POSTED CHOICE OBJ");
       
       $(".input").css("display", "none");
       $(".choice").css("display", "inline"); //display choice screen
@@ -230,8 +228,7 @@ Musubi.ready(function(context) {
 			var done_json = {"screen_type": screen_type, "statement": text, "picture_src": temp}; //create json for done obj
 			var done_obj = new SocialKit.Obj({type: "progress", json: done_json}); //create done obj
 			user.post(done_obj); //append to user
-			console.log("===========SUCCESSFUL POSTING!");
-			console.log("=========DONE OBJ: " + JSON.stringify(done_obj));
+			
 			$(".dare_page").css("display","none");
 			$(".dashboard").css("display","inline");
 		}
@@ -285,7 +282,6 @@ Musubi.ready(function(context) {
 	
 	function refreshDash()
 	{
-		console.log("REFRESH DASH");
 		var truth_content = "";
 		var dare_content = "";
 		$("li").detach();
@@ -315,9 +311,7 @@ Musubi.ready(function(context) {
 				}
 				else
 				{
-					console.log("=======GOT HERE");
 					dare_content += ("<li class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>"+text+"</strong></p><p>"+"See File"+"</p><img src='http://www.myctb.org/wst/npaoeval/Picture%20Library/Checkmark.png'/></li>");
-					console.log("======DARE_CONTENT: " + dare_content);
 					totalDares++;
 				}
 			}
@@ -336,7 +330,6 @@ Musubi.ready(function(context) {
 	
 			
 	$('.link').live('click',function() {
-		console.log("=======LINK CLICKED");
 		var name = $(this).attr('user_name');
 		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
 		var start_obj_DbObj = new SocialKit.DbObj(data); //create DbObj out of start
@@ -372,7 +365,6 @@ Musubi.ready(function(context) {
       var data = context.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //query for game state
 	  var start_obj_DbObj = new SocialKit.DbObj(data);  //construct game state
 	  var user_arr = start_obj_DbObj.query("type = 'user'"); //get all users as array of user json
-	  console.log("================================USERS IN GETUSER IS = " + JSON.stringify(user_arr)); //console found user array
 	  for(i =0; i < user_arr.length; i++) {
 	  	temp_user = new SocialKit.Obj(user_arr[i]); //make temp user obj
 	  	temp_ID = temp_user.json['id']; //get temp user obj ID
