@@ -358,7 +358,7 @@ Musubi.ready(function(context) {
 				var done_obj = new SocialKit.Obj(temp_progress[2]); //getting done obj
 				var img_src = done_obj.json['picture_src']; //getting img url
 				
-				var can = $("#picture");
+				var can = document.getElementById("picture");
 				var img = new Image();
 				img.src = img_src;
 				var ctx = can.getContext("2d");
