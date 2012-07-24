@@ -309,7 +309,7 @@ Musubi.ready(function(context) {
 				}
 				else
 				{
-					dare_content += ("<li class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>Dare: "+text+"</strong></p><p>"+"Click to see proof"+"</p><img src='http://www.iconlet.com/icons/kensaunders/6/CheckMark.png'/></li>");
+					dare_content += ("<li class='link' user_name='"+name+"'><h3>" + name + "</h3><p><strong>Dare: "+text+"</strong></p><p>"+"Click to see proof"+"</p><img height='50px' width='50px' src='http://static5.depositphotos.com/1033335/481/v/450/dep_4818183-Black-tick-or-checkmark--icon.jpg'/></li>");
 					totalDares++;
 				}
 			}
