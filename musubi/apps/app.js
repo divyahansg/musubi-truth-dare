@@ -214,9 +214,18 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#rotate").click(function(e) {
+		alert("rotate clicked");
 		var canvas = document.getElementById("dare_img");
 		var ctx = canvas.getContext("2d");
+		var img = new Image();
+		img.src = $("#dare_img").attr('img_src');
+		if (img.src == "")
+		{
+			alert("No image selected yet!");
+			return;
+		}
 		ctx.rotate(Math.PI / 2);
+		ctx.drawImage(img,0,0,100,100);
 	});
 		
 	
