@@ -237,11 +237,6 @@ Musubi.ready(function(context) {
 			img.src = temp;
 			
 			var canvas = document.getElementById("dare_img");
-			/*canvas.width = 100;
-			canvas.height = 100;
-			var ctx = canvas.getContext("2d");
-			ctx.drawImage(img,0,0,100,100);
-			*/
 			temp = canvas.toDataURL("image/jpeg");
 			console.log("FINAL LENGTH=================" + temp.length);
 			
@@ -391,9 +386,9 @@ Musubi.ready(function(context) {
 				img.src = img_src;
 				console.log("IMG SRC IS =====================" + img.src.length);
 				var ctx = can.getContext("2d");
-				can.width = 300;
+				can.width = 250;
 				can.height = 300;
-				ctx.drawImage(img,0,0,300,300);
+				ctx.drawImage(img,0,0,250,300);
 				console.log($(".img_viewer").html());
 				console.log("=====IMG HEIGHT" + img.height);
 			}
