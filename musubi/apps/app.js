@@ -214,7 +214,6 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#rotate").click(function(e) {
-		alert("rotate clicked");
 		var canvas = document.getElementById("dare_img");
 		var ctx = canvas.getContext("2d");
 		var img = new Image();
@@ -224,6 +223,7 @@ Musubi.ready(function(context) {
 			alert("No image selected yet!");
 			return;
 		}
+		alert(img.src.substring(0,15));
 		ctx.rotate(Math.PI / 2);
 		ctx.drawImage(img,0,0,100,100);
 	});
