@@ -220,13 +220,9 @@ Musubi.ready(function(context) {
 		img.src = $("#dare_img").attr('img_src');
 		
 		img.onload = function() {
-			if (img.src == "")
-			{
-				alert("No image selected yet!");
-				return;
-			}
 			alert(img.src.substring(0,25));
 			ctx.rotate(Math.PI / 2);
+			ctx.fillRect(0,0,100,100);
 			ctx.drawImage(img,0,0,100,100);
 			}
 	});
