@@ -286,16 +286,15 @@ Musubi.ready(function(context) {
 			 	 var img = new Image();
 				 img.src = string;
 				
-				 var canvas = document.getElementById("dare_img");
-				 canvas.width = 150;
-				 canvas.height = 150;
-				 var ctx = canvas.getContext("2d");
-				 //ctx.clearRect(0,0,canvas.width, canvas.height);
-				 ctx.drawImage(img,0,0,150,150);
-				 
-				 $('#dare_img').attr('img_src', string);
-				 alert(string.substring(0,30));
-			 	 
+				 img.onload = function() {
+					 var canvas = document.getElementById("dare_img");
+					 canvas.width = 150;
+					 canvas.height = 150;
+					 var ctx = canvas.getContext("2d");
+				 	 ctx.drawImage(img,0,0,150,150);
+				  
+					 $('#dare_img').attr('img_src', string);
+				 }
 			 	 //$("#dare_img").append("<img id='thumb' height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
 			 	 };
 			 })(f);
