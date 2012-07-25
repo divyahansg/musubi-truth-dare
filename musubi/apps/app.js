@@ -384,17 +384,18 @@ Musubi.ready(function(context) {
 				var can = document.getElementById("picture");
 				var img = new Image();
 				img.src = img_src;
-				console.log("IMG SRC IS =====================" + img.src.length);
-				var ctx = can.getContext("2d");
-				can.width = 250;
-				can.height = 300;
-				ctx.drawImage(img,0,0,250,300);
-				console.log($(".img_viewer").html());
-				console.log("=====IMG HEIGHT" + img.height);
+				img.onload = function() {
+					console.log("IMG SRC IS =====================" + img.src.length);
+					var ctx = can.getContext("2d");
+					can.width = 250;
+					can.height = 300;
+					ctx.drawImage(img,0,0,250,300);
+					
+					$(".img_viewer").css("display","inline");
+					$(".dashboard").css("display","none");
+				}
 			}
 		}
-		$(".img_viewer").css("display","inline");
-		$(".dashboard").css("display","none");
 	});
 	
 	
