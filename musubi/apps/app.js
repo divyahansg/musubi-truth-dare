@@ -223,7 +223,7 @@ Musubi.ready(function(context) {
 			alert("No image selected yet!");
 			return;
 		}
-		alert(img.src.substring(0,15));
+		alert(img.src.substring(0,25));
 		ctx.rotate(Math.PI / 2);
 		ctx.drawImage(img,0,0,100,100);
 	});
