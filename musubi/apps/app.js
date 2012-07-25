@@ -55,7 +55,7 @@ Musubi.ready(function(context) {
 	       
       setTimeout(func, 1000);
 		function func() {
-    		var data = musu.appContext.feed.query("type='truth_dare_state'", "_id desc limit 1")[0]; //getting game state
+    		var data = musu.appContext.feed.query("type='truth_dare_state'")[0];//getting game state
 		    start_obj_DbObj = new SocialKit.DbObj(data); 
 		    start_obj_DbObj.post(user_obj); //adding starting player to game
 		}
@@ -65,7 +65,26 @@ Musubi.ready(function(context) {
 	  $(".input").css("display","inline");      
     });
     
-    //submit input
+    $("#new_game").click(function(e) {
+    	var style = "";
+    	style += "color:red;";
+        var text = "<img src='http://divyahansg.github.com/musubi-truth-dare/musubi/apps/header_1.png'>";
+        var html = '<span style="' + style + '">' + text + '</span>';
+        var content = { "__html" : html, "text" : text };
+        var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
+        musu.appContext.feed.post(start_obj); //post game start
+	  
+	    var user_obj = makeUser(context);    //person starting game
+	       
+        setTimeout(func, 1000);
+		  function func() {
+    		  var data = musu.appContext.feed.query("type='truth_dare_state'")[0]; //getting game state
+		      start_obj_DbObj = new SocialKit.DbObj(data); 
+		      start_obj_DbObj.post(user_obj); //adding starting player to game
+		  }
+		  musu.appContext.quit();
+	});
+		  
     $("#submit").click(function(e) { 
       if($("#truth").val().length == 0 ||  $("#dare").val().length == 0 || $.trim($("#truth").val()).length == 0 || $.trim($("#dare").val()).length == 0) //check if empty
       {
