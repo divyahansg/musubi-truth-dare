@@ -221,7 +221,9 @@ Musubi.ready(function(context) {
 		
 		img.onload = function() {
 			alert(img.src.substring(0,25));
-			ctx.drawImage(img,0,-100,100,100);
+			ctx.translate(100,0);
+			ctx.rotate(Math.PI/2);
+			ctx.drawImage(img,0,0,100,100);
 			}
 	});
 		
