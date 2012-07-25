@@ -213,6 +213,13 @@ Musubi.ready(function(context) {
 		$(".truth_page").css("display","none"); //show dashboard page
 	});
 	
+	$("#rotate").click(function(e) {
+		var canvas = document.getElementById("dare_img");
+		var ctx = canvas.getContext("2d");
+		ctx.rotate(Math.PI / 2);
+	});
+		
+	
 	$("#submit_dare").click(function(e) {
 		if($("#dare_img").attr('img_src') != "")
 		{
