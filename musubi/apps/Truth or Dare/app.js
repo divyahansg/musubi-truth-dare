@@ -55,7 +55,8 @@ Musubi.ready(function(context) {
 	       
       setTimeout(func, 1000);
 		function func() {
-    		var data = musu.appContext.feed.query("type='truth_dare_state'")[0];//getting game state
+    		var data = musu.appContext.feed.query("type='truth_dare_state'");
+    		data = data[data.length - 1];//getting game state
 		    start_obj_DbObj = new SocialKit.DbObj(data); 
 		    start_obj_DbObj.post(user_obj); //adding starting player to game
 		}
@@ -78,7 +79,8 @@ Musubi.ready(function(context) {
 	       
         setTimeout(func, 1000);
 		  function func() {
-    		  var data = musu.appContext.feed.query("type='truth_dare_state'")[0]; //getting game state
+    		  var data = musu.appContext.feed.query("type='truth_dare_state'");
+    		  data = data[data.length - 1]; //getting game state
 		      start_obj_DbObj = new SocialKit.DbObj(data); 
 		      start_obj_DbObj.post(user_obj); //adding starting player to game
 		  }
