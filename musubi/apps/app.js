@@ -221,8 +221,6 @@ Musubi.ready(function(context) {
 		
 		img.onload = function() {
 			alert(img.src.substring(0,25));
-			ctx.fillStyle="#FFFFFF"
-			ctx.fillRect(0,0,100,100);
 			ctx.drawImage(img,0,-100,100,100);
 			}
 	});
