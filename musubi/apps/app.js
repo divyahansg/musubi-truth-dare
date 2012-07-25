@@ -220,10 +220,9 @@ Musubi.ready(function(context) {
 		img.src = $("#dare_img").attr('img_src');
 		
 		img.onload = function() {
-			alert(img.src.substring(0,25));
-			ctx.translate(150,0);
+			ctx.translate(100,0);
 			ctx.rotate(Math.PI/2);
-			ctx.drawImage(img,0,0,150,150);
+			ctx.drawImage(img,0,0,100,100);
 			}
 	});
 		
@@ -237,12 +236,12 @@ Musubi.ready(function(context) {
 			var img = new Image();
 			img.src = temp;
 			
-			var canvas = document.createElement("canvas");
-			canvas.width = 100;
+			var canvas = document.getElementById("dare_img");
+			/*canvas.width = 100;
 			canvas.height = 100;
 			var ctx = canvas.getContext("2d");
 			ctx.drawImage(img,0,0,100,100);
-			
+			*/
 			temp = canvas.toDataURL("image/jpeg");
 			console.log("FINAL LENGTH=================" + temp.length);
 			
@@ -287,10 +286,10 @@ Musubi.ready(function(context) {
 				
 				 img.onload = function() {
 					 var canvas = document.getElementById("dare_img");
-					 canvas.width = 150;
-					 canvas.height = 150;
+					 canvas.width = 100;
+					 canvas.height = 100;
 					 var ctx = canvas.getContext("2d");
-				 	 ctx.drawImage(img,0,0,150,150);
+				 	 ctx.drawImage(img,0,0,100,100);
 				  
 					 $('#dare_img').attr('img_src', string);
 					 }	
@@ -392,7 +391,7 @@ Musubi.ready(function(context) {
 				img.src = img_src;
 				console.log("IMG SRC IS =====================" + img.src.length);
 				var ctx = can.getContext("2d");
-				can.width = 250;
+				can.width = 300;
 				can.height = 300;
 				ctx.drawImage(img,0,0,300,300);
 				console.log($(".img_viewer").html());
