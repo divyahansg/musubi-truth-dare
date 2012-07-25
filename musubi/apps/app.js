@@ -214,7 +214,7 @@ Musubi.ready(function(context) {
 	});
 	
 	$("#rotate").click(function(e) {
-		var canvas = document.getElementById("dare_img");
+		var canvas = $("#dare_img")[0];
 		var ctx = canvas.getContext("2d");
 		var img = new Image();
 		img.src = $("#dare_img").attr('img_src');
