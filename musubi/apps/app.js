@@ -218,14 +218,17 @@ Musubi.ready(function(context) {
 		var ctx = canvas.getContext("2d");
 		var img = new Image();
 		img.src = $("#dare_img").attr('img_src');
-		if (img.src == "")
-		{
-			alert("No image selected yet!");
-			return;
-		}
-		alert(img.src.substring(0,25));
-		ctx.rotate(Math.PI / 2);
-		ctx.drawImage(img,0,0,100,100);
+		
+		img.onload = function() {
+			if (img.src == "")
+			{
+				alert("No image selected yet!");
+				return;
+			}
+			alert(img.src.substring(0,25));
+			ctx.rotate(Math.PI / 2);
+			ctx.drawImage(img,0,0,100,100);
+			}
 	});
 		
 	
@@ -294,8 +297,7 @@ Musubi.ready(function(context) {
 				 	 ctx.drawImage(img,0,0,150,150);
 				  
 					 $('#dare_img').attr('img_src', string);
-				 }
-			 	 //$("#dare_img").append("<img id='thumb' height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
+					 }	
 			 	 };
 			 })(f);
 			 
