@@ -274,7 +274,7 @@ Musubi.ready(function(context) {
 				 canvas.width = 150;
 				 canvas.height = 150;
 				 var ctx = canvas.getContext("2d");
-				 ctx.clearRect(0,0,canvas.width, canvas.height);
+				 //ctx.clearRect(0,0,canvas.width, canvas.height);
 				 ctx.drawImage(img,0,0,150,150);
 				 
 				 $('#dare_img').attr('img_src', string);
