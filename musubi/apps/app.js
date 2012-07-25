@@ -278,7 +278,7 @@ Musubi.ready(function(context) {
 				 ctx.drawImage(img,0,0,150,150);
 				 
 				 $('#dare_img').attr('img_src', string);
-				 alert(string.substring(0,15));
+				 alert(string.substring(0,30));
 			 	 
 			 	 //$("#dare_img").append("<img id='thumb' height='100px' width='100px' src='" + string + "' title='" + escape(theFile.name) + "'/>");
 			 	 };
