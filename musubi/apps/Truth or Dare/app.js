@@ -69,7 +69,7 @@ Musubi.ready(function(context) {
     $("#new_game").click(function(e) {
     	var style = "";
     	style += "color:red;";
-        var text = "<img src='http://divyahansg.github.com/musubi-truth-dare/musubi/apps/header_1.png'>";
+        var text = "<img src='header_1.png'>";
         var html = '<span style="' + style + '">' + text + '</span>';
         var content = { "__html" : html, "text" : text };
         var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
