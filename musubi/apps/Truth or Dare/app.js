@@ -44,7 +44,7 @@ Musubi.ready(function(context) {
       var style = "";//"font-size:xx-large;padding:5px;";
       //style += "background-color:blue;white-space:nowrap;";
       style += "color:red;";
-      var text = "<img src='header_1.png'>";
+      var text = "<img src='http://divyahansg.github.com/musubi-truth-dare/musubi/apps/Truth%20or%20Dare/header_1.png'>";
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
