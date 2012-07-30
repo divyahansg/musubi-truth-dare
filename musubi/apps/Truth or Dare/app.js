@@ -48,12 +48,11 @@ Musubi.ready(function(context) {
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
-      start_obj_DbObj = musu.appContext.feed.post(start_obj); //post game start
+      musu.appContext.feed.post(start_obj); //post game start
       
 	  
 	  var user_obj = makeUser(context);    //person starting game
-	  start_obj_DbObj.post(user_obj);
-	  /* 
+	  
       setTimeout(func, 1000);
 		function func() {
     		var data = musu.appContext.feed.query("type='truth_dare_state'");
@@ -61,7 +60,7 @@ Musubi.ready(function(context) {
 		    start_obj_DbObj = new SocialKit.DbObj(data); 
 		    start_obj_DbObj.post(user_obj); //adding starting player to game
 		}
-	  */	
+	  	
 		
 	  $(".start").css("display","none"); //goto input screen
 	  $(".about").css("display","none");
@@ -75,11 +74,10 @@ Musubi.ready(function(context) {
         var html = '<span style="' + style + '">' + text + '</span>';
         var content = { "__html" : html, "text" : text };
         var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
-        start_obj_DbObj = musu.appContext.feed.post(start_obj); //post game start
+        musu.appContext.feed.post(start_obj); //post game start
 	  
 	    var user_obj = makeUser(context);    //person starting game
-	    start_obj_DbObj.post(user_obj);
-	    /*
+	    
         setTimeout(func, 1000);
 		  function func() {
     		  var data = musu.appContext.feed.query("type='truth_dare_state'");
@@ -87,7 +85,7 @@ Musubi.ready(function(context) {
 		      start_obj_DbObj = new SocialKit.DbObj(data); 
 		      start_obj_DbObj.post(user_obj); //adding starting player to game
 		  }
-		*/  
+		
 		  musu.appContext.quit();
 	});
 		  
