@@ -48,11 +48,12 @@ Musubi.ready(function(context) {
       var html = '<span style="' + style + '">' + text + '</span>';
       var content = { "__html" : html, "text" : text };
       var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
-      musu.appContext.feed.post(start_obj); //post game start
+      start_obj_DbObj = musu.appContext.feed.post(start_obj); //post game start
       
 	  
 	  var user_obj = makeUser(context);    //person starting game
-	       
+	  start_obj_DbObj.post(user_obj);
+	  /* 
       setTimeout(func, 1000);
 		function func() {
     		var data = musu.appContext.feed.query("type='truth_dare_state'");
@@ -60,6 +61,7 @@ Musubi.ready(function(context) {
 		    start_obj_DbObj = new SocialKit.DbObj(data); 
 		    start_obj_DbObj.post(user_obj); //adding starting player to game
 		}
+	  */	
 		
 	  $(".start").css("display","none"); //goto input screen
 	  $(".about").css("display","none");
@@ -73,10 +75,11 @@ Musubi.ready(function(context) {
         var html = '<span style="' + style + '">' + text + '</span>';
         var content = { "__html" : html, "text" : text };
         var start_obj = new SocialKit.Obj({type : "truth_dare_state", json: content});
-        musu.appContext.feed.post(start_obj); //post game start
+        start_obj_DbObj = musu.appContext.feed.post(start_obj); //post game start
 	  
 	    var user_obj = makeUser(context);    //person starting game
-	       
+	    start_obj_DbObj.post(user_obj);
+	    /*
         setTimeout(func, 1000);
 		  function func() {
     		  var data = musu.appContext.feed.query("type='truth_dare_state'");
@@ -84,6 +87,7 @@ Musubi.ready(function(context) {
 		      start_obj_DbObj = new SocialKit.DbObj(data); 
 		      start_obj_DbObj.post(user_obj); //adding starting player to game
 		  }
+		*/  
 		  musu.appContext.quit();
 	});
 		  
@@ -141,20 +145,30 @@ Musubi.ready(function(context) {
 				var truth_obj = new SocialKit.Obj(temp_truth[i]);
 				var truth_DbObj = new SocialKit.DbObj(temp_truth[i]); //need to make temp dbObj to query for answers
 				var nested = truth_DbObj.query("type='taken'");
-				if(nested.length == 0)// && truth_obj.json['src_user'] != context.user["name"])//making sure not taken AND not getting own truth
+				if(nested.length == 0)
 				{
 					arr.push(temp_truth[i]); //store json for populating answer page
 				}
 			}
-			/*
-			if (temp_truth.length == 1)//if playing by self
-			{
-				arr.push(temp_truth[0]);
-			}
-			*/
 			
-			var rand = Math.floor(Math.random() * (arr.length)); //rand index
-			var truth_json = (new SocialKit.Obj(arr[rand])).json; //random truth json from obj json rep (meta-JSON) 
+			var truth_json;
+			var found = false;
+			for (i=0; i<10; i++)
+			{
+				var rand = Math.floor(Math.random() * (arr.length));
+				truth_json = (new SocialKit.Obj(arr[rand])).json;
+				if (truth_json['src_user'] != context.user['name'])
+				{
+					found = true;
+					break;
+				}
+			}
+			if (!found)
+			{
+				rand = 0;
+				truth_json = (new SocialKit.Obj(arr[rand])).json;
+			}
+			
 			$("#current_truth").append("<strong>" + truth_json['text'] + "</strong><br /> asked by: " + truth_json['src_user']); //fill answer-div with rand truth and user
 			
 			var current_truth = new SocialKit.DbObj(arr[rand]); //making dbobj for nesting answered under truth 
@@ -190,20 +204,30 @@ Musubi.ready(function(context) {
 				var dare_obj = new SocialKit.Obj(temp_dare[i]);
 				var dare_DbObj = new SocialKit.DbObj(temp_dare[i]); //need to make temp dbObj to query for answers
 				var nested = dare_DbObj.query("type='taken'");
-				if(nested.length == 0)// && dare_obj.json['src_user'] != context.user["name"])//making sure not taken AND not getting own dare
+				if(nested.length == 0)
 				{
 					arr.push(temp_dare[i]); //store json for populating answer page
 				}
 			}
-			/*
-			if (temp_dare.length == 1) //if playing by self
-			{
-				arr.push(temp_dare[0]);
-			}
-			*/
 			
-			var rand = Math.floor(Math.random() * (arr.length)); //rand index
-			var dare_json = (new SocialKit.Obj(arr[rand])).json; //random dare json from obj json rep (meta-JSON) 
+			var dare_json;
+			var found = false;
+			for (i=0; i<10; i++)
+			{
+				var rand = Math.floor(Math.random() * (arr.length));
+				dare_json = (new SocialKit.Obj(arr[rand])).json;
+				if (dare_json['src_user'] != context.user['name'])
+				{
+					found = true;
+					break;
+				}
+			}
+			if (!found)
+			{
+				rand = 0;
+				dare_json = (new SocialKit.Obj(arr[rand])).json;
+			}
+			
 			$("#current_dare").append("<strong>" + dare_json['text'] + "</strong><br /> asked by: " + dare_json['src_user']); //fill answer-div with rand dare and user
 			
 			var current_dare = new SocialKit.DbObj(arr[rand]); //making dbobj for nesting answered under dare 
