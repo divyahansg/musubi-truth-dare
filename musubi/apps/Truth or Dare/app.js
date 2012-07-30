@@ -141,16 +141,17 @@ Musubi.ready(function(context) {
 				var truth_obj = new SocialKit.Obj(temp_truth[i]);
 				var truth_DbObj = new SocialKit.DbObj(temp_truth[i]); //need to make temp dbObj to query for answers
 				var nested = truth_DbObj.query("type='taken'");
-				if(nested.length == 0 && truth_obj.json['src_user'] != context.user["name"])//making sure not taken AND not getting own truth
+				if(nested.length == 0)// && truth_obj.json['src_user'] != context.user["name"])//making sure not taken AND not getting own truth
 				{
 					arr.push(temp_truth[i]); //store json for populating answer page
 				}
 			}
-			
+			/*
 			if (temp_truth.length == 1)//if playing by self
 			{
 				arr.push(temp_truth[0]);
 			}
+			*/
 			
 			var rand = Math.floor(Math.random() * (arr.length)); //rand index
 			var truth_json = (new SocialKit.Obj(arr[rand])).json; //random truth json from obj json rep (meta-JSON) 
@@ -189,16 +190,17 @@ Musubi.ready(function(context) {
 				var dare_obj = new SocialKit.Obj(temp_dare[i]);
 				var dare_DbObj = new SocialKit.DbObj(temp_dare[i]); //need to make temp dbObj to query for answers
 				var nested = dare_DbObj.query("type='taken'");
-				if(nested.length == 0 && dare_obj.json['src_user'] != context.user["name"])//making sure not taken AND not getting own dare
+				if(nested.length == 0)// && dare_obj.json['src_user'] != context.user["name"])//making sure not taken AND not getting own dare
 				{
 					arr.push(temp_dare[i]); //store json for populating answer page
 				}
 			}
-			
+			/*
 			if (temp_dare.length == 1) //if playing by self
 			{
 				arr.push(temp_dare[0]);
 			}
+			*/
 			
 			var rand = Math.floor(Math.random() * (arr.length)); //rand index
 			var dare_json = (new SocialKit.Obj(arr[rand])).json; //random dare json from obj json rep (meta-JSON) 
