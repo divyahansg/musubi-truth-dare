@@ -330,6 +330,7 @@ Musubi.ready(function(context) {
 		var f = files[0];
 		
 		var reader = new FileReader();
+		console.log("AFTER HERE=========================");
 		
 		// Closure to capture the file information.
 		reader.onload = (function(theFile) {
