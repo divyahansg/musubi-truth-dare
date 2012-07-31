@@ -492,12 +492,12 @@ Musubi.ready(function(context) {
 	    var page = json['screen_type']; //get screentype from json INSIDE answer obj
 	    if (page == "truth") //if truth
 	    {
-	    	$("#current_truth").append(json['text'] + " asked by: " + json['truth_src']); //fill answer page
+	    	$("#current_truth").append("<strong>" + json['text'] + "</strong><br /> asked by: " + json['truth_src']); //fill answer page
 	    	$(".truth_page").css("display","inline"); //show truth-answer page
 		}
 		else
 		{
-			$("#current_dare").append(json['text'] + " asked by: " + json['dare_src']); //fill answer page
+			$("#current_dare").append("<strong>" + json['text'] + "</strong><br /> asked by: " + json['dare_src']); //fill answer page
 	    	$(".dare_page").css("display","inline"); //show dare-answer page
 		}
 	}
