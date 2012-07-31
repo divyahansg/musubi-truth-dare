@@ -475,8 +475,8 @@ Musubi.ready(function(context) {
 	  var user_arr = start_obj_DbObj.query("type = 'user'"); //get all users as array of user json
 	  for(i =0; i < user_arr.length; i++) {
 	  	temp_user = new SocialKit.Obj(user_arr[i]); //make temp user obj
-	  	temp_ID = temp_user.json['id']; //get temp user obj ID
-	  	if(temp_ID == context.user['id']) { //match temp with user
+	  	temp_name = temp_user.json['name']; //get temp user obj ID
+	  	if(temp_name == context.user['name']) { //match temp with user
 	  		return user_arr[i]; //return user json
 	  	}
 	  }
