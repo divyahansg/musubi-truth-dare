@@ -28,6 +28,7 @@ Musubi.ready(function(context) {
 			var user_status = user.query("type='progress'"); //query state
 			
 			//DEPENDENT ON QUERY ORDER
+			console.log("USER_STATUS.LENGTH ===============" + user_status.length);
 			if 		(user_status.length >= 3) {showDash(user_status[2]);} //MAKE DONE OBJECT AFTER ANSWERING
 			else if (user_status.length == 2) {showAnswer(user_status[1]);} //goto answer screen
 			else if (user_status.length == 1) {showChoice(user_status[0]);} //goto choice screen
